@@ -56,11 +56,7 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+       
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -193,7 +189,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <springProfiles>development</springProfiles>
+                <springProfiles>h2</springProfiles>
             </properties>
             <dependencies>
                 <dependency>
@@ -203,6 +199,35 @@
                 </dependency>
             </dependencies>
         </profile>
+
+        <profile>
+            <id>h2</id>
+            <properties>
+                <springProfiles>h2</springProfiles>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+       
+        <profile>
+            <id>postgres</id>
+            <properties>
+                <springProfiles>postgres</springProfiles>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+       
         <profile>
             <id>production</id>
             <activation>
@@ -213,13 +238,6 @@
             <properties>
                 <springProfiles>production</springProfiles>
             </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
             <build>
                 <plugins>
                     <plugin>
