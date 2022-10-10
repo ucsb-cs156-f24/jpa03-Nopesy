@@ -189,7 +189,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <springProfiles>h2</springProfiles>
+                <springProfiles>development</springProfiles>
             </properties>
             <dependencies>
                 <dependency>
