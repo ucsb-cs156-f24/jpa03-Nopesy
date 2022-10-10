@@ -216,6 +216,11 @@
        
         <profile>
             <id>postgres</id>
+             <activation>
+                <property>
+                    <name>env.POSTGRES</name>
+                </property>
+            </activation>
             <properties>
                 <springProfiles>postgres</springProfiles>
             </properties>
