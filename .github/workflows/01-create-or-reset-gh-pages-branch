@@ -1,0 +1,30 @@
+name: "01-create-or-reset-gh-pages-branch"
+on:
+  workflow_dispatch:
+
+env:
+  GH_TOKEN: ${{ github.token }}
+
+permissions:
+  contents: write  # Needed for JamesIves/github-pages-deploy-action@v4
+
+jobs: 
+  build-site:
+    name: Build Site
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout local code to establish repo
+      uses: actions/checkout@v2
+
+    - name: compose web site
+      run: |
+        mkdir site
+        cp -r frontend/docs-index/* site
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: site # The folder the action should deploy.
+        branch: gh-pages
+        clean: true # Automatically remove deleted files from the deploy branch
