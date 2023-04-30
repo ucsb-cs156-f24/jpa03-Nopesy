@@ -32,7 +32,10 @@ jobs:
     - name: Compose web site
       run: |
         mkdir site
-        cp -r frontend/docs-index/* site    
+        cp -r frontend/docs-index/* site
+        mkdir site/storybook
+        cp -r frontend/docs-index/storybook-placeholder.html site/storybook/index.html
+        mkdir site/branches    
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
