@@ -34,7 +34,7 @@ jobs:
         mkdir site
         cp -r frontend/docs-index/* site
         mkdir site/storybook
-        cp -r frontend/docs-index/storybook-placeholder.html site/storybook/index.html
+        cp -r frontend/docs-index/storybook_placeholder.html site/storybook/index.html
         mkdir site/branches    
 
     - name: Deploy 🚀
