@@ -6,7 +6,15 @@ env:
   GH_TOKEN: ${{ github.token }}
 
 permissions:
-  contents: write  # Needed for JamesIves/github-pages-deploy-action@v4
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs: 
   setup-node-and-cache-it:
@@ -168,3 +176,35 @@ jobs:
         clean: true # Automatically remove deleted files from the deploy branch
         target-folder: prs/${{ matrix.value.number }}/storybook # The folder that we serve our Storybook files from 
     
+  # Build job
+  build-pages:
+    needs: [build-storybook-for-each-pr, build-storybook-main]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: 'gh-pages'
+          fetch-depth: 1
+          token: ${{ github.token }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+
+  # Deployment job
+  deploy-pages:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: [build-pages]
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
