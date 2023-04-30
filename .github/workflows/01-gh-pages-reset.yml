@@ -11,8 +11,8 @@ permissions:
   contents: write  # Needed for JamesIves/github-pages-deploy-action@v4
 
 jobs: 
-  build-site:
-    name: Build Site
+  build-basic-site:
+    name: Build Basic Site
     runs-on: ubuntu-latest
 
     steps:
@@ -47,7 +47,7 @@ jobs:
   # Build job
   build-jekyll-site:
     name: Build Jekyll Site
-    needs: [build-storybook-for-each-pr, build-storybook-main]
+    needs: [build-basic-site]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
