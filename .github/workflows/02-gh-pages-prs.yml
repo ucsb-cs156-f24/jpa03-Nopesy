@@ -114,11 +114,11 @@ jobs:
   build-storybook-for-each-pr:
     name: Storybook (PR ${{ matrix.value.number }}, Branch ${{ matrix.value.headRefName }})
     runs-on: ubuntu-latest
-    needs: [setup-node-and-cache-it, build-basic-site]
+    needs: [setup-node-and-cache-it, build-basic-site, get-pull-requests]
 
     strategy:
       matrix:
-        value: ${{needs.get-pull-requests.outputs.PRS}}
+        value: ${fromJSON(needs.get-pull-requests.outputs.PRS)}}
 
     steps:
     - name: Debugging Output
