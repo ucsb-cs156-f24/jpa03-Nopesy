@@ -31,7 +31,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 <td><a href="{{pr.url}}">PR {{pr.number}}</a></td>
 <td>{{pr.headRefName}}</td>
 <td>{{pr.author.login}}</td>
-<td><a href="storybook-qa/{{pr.headRefName}}">storybook</a></td>
+<td><a href="prs/{{pr.number}}/storybook">storybook</a></td>
 </tr>
 {% endfor %}
 </tbody>
