@@ -25,8 +25,8 @@ jobs:
         cp -r frontend/docs-index/* site
 
     - name: Append name of site to _config.yml
-        working-directory: ./frontend/docs-index
-        run: | 
+      working-directory: ./frontend/docs-index
+      run: | 
           OWNER_PLUS_REPOSITORY=${{github.repository}}
           OWNER=${{ github.repository_owner }}
           REPOSITORY=${OWNER_PLUS_REPOSITORY/$OWNER\//}
