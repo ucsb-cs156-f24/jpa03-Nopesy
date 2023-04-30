@@ -108,7 +108,7 @@ jobs:
 
     strategy:
       matrix:
-        value: ${{fromJSON(env.PRS)}}
+        value: ${{fromJSON(${{env.PRS}})}}
 
     steps:
     - name: Debugging Output
