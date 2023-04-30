@@ -42,7 +42,6 @@ jobs:
         cp -r frontend/docs-index/* site
         mkdir -p site/storybook
         cp -r -p frontend/storybook_static/* site/storybook
-        mkdir -p site/branches    
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4

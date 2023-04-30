@@ -25,7 +25,6 @@ jobs:
     steps:
     - name: Get branches from Github api
       run: |
-         CONFIG_YML=frontend/docs-index/_config.yml
          gh pr list -s open --json url,author,number,title,headRefName > prs.json
          PRS=`cat prs.json`
          echo "PRS=${PRS}" >> "$GITHUB_OUTPUT"
@@ -52,6 +51,7 @@ jobs:
           echo "repo_name: ${REPOSITORY}" >> ${CONFIG_YML}
 
     - name: Store PRs as JSON in _config.yml
+    - name: Store PRs as JSON in _config.yml
       run: |
          PRS=${{needs.get-pull-requests.outputs.PRS}}
          CONFIG_YML=frontend/docs-index/_config.yml
@@ -64,7 +64,6 @@ jobs:
         cp -r frontend/docs-index/* site
         mkdir -p site/storybook
         cp -r frontend/docs-index/storybook_placeholder.html site/storybook/index.html
-        mkdir -p site/branches
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
