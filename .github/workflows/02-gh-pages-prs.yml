@@ -62,7 +62,8 @@ jobs:
           REPOSITORY=${OWNER_PLUS_REPOSITORY/$OWNER\//}
           echo "repo: ${OWNER_PLUS_REPOSITORY}" >> ${CONFIG_YML}
           echo "owner: ${OWNER}" >> ${CONFIG_YML}
-          echo "repo_name: ${REPOSITORY}" >> ${CONFIG_YML}
+          echo "repo_name: ${REPOSITORY}" >> ${CONFIG_YML}    
+          cat ${CONFIG_YML}
 
     - name: Store PRs as JSON in _config.yml
       run: |
@@ -70,7 +71,8 @@ jobs:
          CONFIG_YML=frontend/docs-index/_config.yml
          echo "pull_requests: ${pull_requests}, CONFIG_YML: ${CONFIG_YML}"
          echo "pull_requests: ${pull_requests}" >> ${CONFIG_YML}
-      
+         cat ${CONFIG_YML}
+         
     - name: Compose web site
       run: |
         mkdir -p site
