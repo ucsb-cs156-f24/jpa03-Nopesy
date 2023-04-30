@@ -23,6 +23,10 @@ jobs:
     name: Get Pull Requests
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout local code to establish repo
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
     - name: Get branches from Github api
       run: |
          gh pr list -s open --json url,author,number,title,headRefName > prs.json
