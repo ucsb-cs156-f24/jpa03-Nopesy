@@ -1,3 +1,5 @@
+# Creates/Resets the gh-pages branch to the intended start state
+
 name: "01-gh-pages-reset: Create or reset gh-pages branch"
 on:
   workflow_dispatch:
