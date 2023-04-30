@@ -51,7 +51,6 @@ jobs:
           echo "repo_name: ${REPOSITORY}" >> ${CONFIG_YML}
 
     - name: Store PRs as JSON in _config.yml
-    - name: Store PRs as JSON in _config.yml
       run: |
          PRS=${{needs.get-pull-requests.outputs.PRS}}
          CONFIG_YML=frontend/docs-index/_config.yml
