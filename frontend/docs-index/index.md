@@ -5,7 +5,7 @@
 
 * [Storybook](storybook)
 
-## Branches
+## Open Pull Requests
 
 <style>
 table, th, td {
@@ -25,12 +25,12 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 </tr>
 </thead>
 <tbody>
-{% for b in site.branches %}
+{% for pr in site.prs %}
 <tr>
-<td>{{b.name}}</td>
-<td>{{b.actor}}</td>
-<td><a href="{{b.pull_request_url}}">PR {{b.}}</a></td>
-<td><a href="storybook-qa/{{b.name}}">storybook</a></td>
+<td>{{pr.headRefName}}</td>
+<td>{{pr.author.login}}</td>
+<td><a href="{{pr.url}}">PR {{pr.number}}</a></td>
+<td><a href="storybook-qa/{{pr.headRefName}}">storybook</a></td>
 </tr>
 {% endfor %}
 </tbody>
