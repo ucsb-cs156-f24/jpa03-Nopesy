@@ -1,6 +1,4 @@
-# Creates/Resets the gh-pages branch to the intended start state
-
-name: "02-gh-pages-branches: Create or reset branch collection"
+name: "02-gh-pages-prs: Create or reset PR collection"
 on:
   workflow_dispatch:
 

@@ -10,6 +10,7 @@
 <style>
 table, th, td {
   border: 1px solid black;
+  padding: 2px;
   border-collapse: collapse;
 }
 tr:nth-child(even) {background-color: #f2f2f2;}
@@ -18,18 +19,18 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 <table>
 <thead>
 <tr>
-<th>Branch</th>
-<th>Who Pushed It</th>
 <th>PR</th>
+<th>Branch</th>
+<th>Author</th>
 <th>Storybook</th>
 </tr>
 </thead>
 <tbody>
 {% for pr in site.prs %}
 <tr>
+<td><a href="{{pr.url}}">PR {{pr.number}}</a></td>
 <td>{{pr.headRefName}}</td>
 <td>{{pr.author.login}}</td>
-<td><a href="{{pr.url}}">PR {{pr.number}}</a></td>
 <td><a href="storybook-qa/{{pr.headRefName}}">storybook</a></td>
 </tr>
 {% endfor %}
