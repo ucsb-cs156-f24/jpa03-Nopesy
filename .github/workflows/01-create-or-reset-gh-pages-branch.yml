@@ -22,6 +22,17 @@ jobs:
         mkdir site
         cp -r frontend/docs-index/* site
 
+    - name: Append name of site to _config.yml
+        working-directory: ./frontend/docs-index
+        run: | 
+          OWNER_PLUS_REPOSITORY=${{github.repository}}
+          OWNER=${{ github.repository_owner }}
+          REPOSITORY=${OWNER_PLUS_REPOSITORY/$OWNER\//}
+          echo "repo: ${OWNER_PLUS_REPOSITORY}" >> _config.yml
+          echo "owner: ${OWNER}" >> _config.yml
+          echo "repo_name: ${REPOSITORY}" >> _config.yml
+          cp -r frontend/docs-index/_config.yml site
+
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
