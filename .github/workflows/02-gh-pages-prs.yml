@@ -81,6 +81,7 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
+        token: ${{ secrets.GH_TOKEN }}
         folder: site # The folder the action should deploy.
         branch: gh-pages
         clean: true # Automatically remove deleted files from the deploy branch
@@ -110,6 +111,7 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.2.0
       with:
+        token: ${{ secrets.GH_TOKEN }}
         branch: gh-pages # The branch the action should deploy to.
         folder: frontend/storybook_static # The folder that the build-storybook script generates files.
         clean: true # Automatically remove deleted files from the deploy branch
@@ -159,6 +161,7 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.2.0
       with:
+        token: ${{ secrets.GH_TOKEN }}
         branch: gh-pages # The branch the action should deploy to.
         folder: site/prs/${{ matrix.value.number }}/storybook # The folder that the build-storybook script generates files.
         clean: true # Automatically remove deleted files from the deploy branch
