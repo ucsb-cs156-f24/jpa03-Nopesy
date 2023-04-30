@@ -41,7 +41,7 @@ jobs:
          cat prs.json
          pull_requests=`cat prs.json`
          echo "pull_requests=${pull_requests}"
-         echo "pull_requests=${{toJSON(pull_requests)}}" >> "$GITHUB_OUTPUT"
+         echo "pull_requests=${pull_requests}" >> "$GITHUB_OUTPUT"
 
   build-basic-site:
     name: Build Basic Site
@@ -67,7 +67,7 @@ jobs:
 
     - name: Store PRs as JSON in _config.yml
       run: |
-         pull_requests=${{toJSON(needs.get-pull-requests.outputs.pull_requests)}}
+         pull_requests=${{toJSON(needs.get-pull-requests.outputs.pull_requests}}
          CONFIG_YML=frontend/docs-index/_config.yml
          echo "pull_requests: ${pull_requests}, CONFIG_YML: ${CONFIG_YML}"
          echo "pull_requests: ${pull_requests}" >> ${CONFIG_YML}
