@@ -28,8 +28,8 @@ jobs:
          CONFIG_YML=frontend/docs-index/_config.yml
          gh pr list -s open --json url,author,number,title,headRefName > prs.json
          PRS=`cat prs.json`
-         echo "PRS=${PRS}" >> "$GITHUB_ENV"
- 
+         echo "PRS=${PRS}" >> "$GITHUB_OUTPUT"
+
   build-basic-site:
     name: Build Site
     runs-on: ubuntu-latest
@@ -51,11 +51,11 @@ jobs:
           echo "owner: ${OWNER}" >> ${CONFIG_YML}
           echo "repo_name: ${REPOSITORY}" >> ${CONFIG_YML}
 
-    - name: Get branches from Github api
+    - name: Store PRs as JSON in _config.yml
       run: |
+         PRS=${{needs.get-pull-requests.outputs.PRS}}
          CONFIG_YML=frontend/docs-index/_config.yml
-         gh pr list -s open --json url,author,number,title,headRefName > prs.json
-         PRS=`cat prs.json`
+         echo "prs: ${PRS}, CONFIG_YML: ${CONFIG_YML}"
          echo "prs: ${PRS}" >> ${CONFIG_YML}
       
     - name: Compose web site
@@ -108,7 +108,7 @@ jobs:
 
     strategy:
       matrix:
-        value: ${{fromJSON(PRS)}}
+        value: ${{needs.get-pull-requests.outputs.PRS}}
 
     steps:
     - name: Debugging Output
