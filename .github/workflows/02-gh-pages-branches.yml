@@ -31,13 +31,11 @@ jobs:
 
     - name: Get branches from Github api
       run: |
-         gh api \
-           -H "Accept: application/vnd.github+json" \
-           -H "X-GitHub-Api-Version: 2022-11-28" \
-           /repos/${{ github.repository }}/branches > branches.json
-         cat branches.json
+         CONFIG_YML=frontend/docs-index/_config.yml
+         gh pr list -s open --json url,author,number,title,headRefName > prs.json
+         PRS=`cat prs.json`
+         echo "prs: ${PRS}" >> ${CONFIG_YML}
       
-
     - name: Compose web site
       run: |
         mkdir site
