@@ -118,7 +118,7 @@ jobs:
 
     strategy:
       matrix:
-        value: ${fromJSON(needs.get-pull-requests.outputs.PRS)}}
+        value: ${{ fromJSON(needs.get-pull-requests.outputs.PRS)}}
 
     steps:
     - name: Debugging Output
