@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout local code to establish repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 1
     - name: Setup Node.js
@@ -32,7 +32,7 @@ jobs:
       pull_requests: ${{ steps.get-prs.outputs.pull_requests }}
     steps:
     - name: Checkout local code to establish repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Get Pull Requests from Github api
       id: get-prs
       run: |
@@ -50,7 +50,7 @@ jobs:
 
     steps:
     - name: Checkout local code to establish repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 1
 
@@ -92,7 +92,7 @@ jobs:
 
     steps:
     - name: Checkout local code to establish repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup Node.js
       uses: actions/setup-node@v3
@@ -133,13 +133,13 @@ jobs:
         echo "matrix.value.number: ${{ matrix.value.number }}"
         echo "matrix.value.title:  ${{ matrix.value.title }}"
         echo "matrix.value.headRefName:  ${{ matrix.value.headRefName }}"
-   
+
     - name: Checkout repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: ${{ matrix.value.headRefName }}
-        token: ${{ secrets.GH_TOKEN }}
         fetch-depth: 1
+        token: ${{ github.token }}
 
     - name: Setup Node.js
       uses: actions/setup-node@v3
