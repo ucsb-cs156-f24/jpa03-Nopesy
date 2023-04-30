@@ -32,10 +32,12 @@ jobs:
     - name: Checkout local code to establish repo
       uses: actions/checkout@v2
       with:
-        fetch-depth: 1
+        fetch-depth: 0
     - name: Get branches from Github api
       run: |
+         gh pr list -s open --json url,author,number,title,headRefName 
          gh pr list -s open --json url,author,number,title,headRefName > prs.json
+         cat prs.json
          PRS=`cat prs.json`
          echo "PRS=${PRS}" >> "$GITHUB_OUTPUT"
 
