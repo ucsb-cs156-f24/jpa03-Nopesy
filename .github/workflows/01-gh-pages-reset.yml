@@ -1,4 +1,4 @@
-name: "01-create-or-reset-gh-pages-branch"
+name: "01-gh-pages-reset: Create or reset gh-pages branch"
 on:
   workflow_dispatch:
 
