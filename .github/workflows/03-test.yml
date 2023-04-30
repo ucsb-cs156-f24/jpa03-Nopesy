@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        value: ${{fromJson('["a", "b", "c"]'')}}
+        value: ${{fromJson('["a", "b", "c"]')}}
     steps:
       - run: |
           echo "${{ matrix.value }}"
