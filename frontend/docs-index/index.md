@@ -26,7 +26,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 </tr>
 </thead>
 <tbody>
-{% for pr in site.prs %}
+{% for pr in site.pull_requests %}
 <tr>
 <td><a href="{{pr.url}}">PR {{pr.number}}</a></td>
 <td>{{pr.headRefName}}</td>
