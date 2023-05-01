@@ -164,10 +164,6 @@ jobs:
         npm install
         npx build-storybook --docs -o storybook_static_${{ matrix.value.number }}
  
-    #  - name: Create directory
-    #    run: | # create directory
-    #     mkdir -p prs/${{ matrix.value.number }}/storybook
-
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
@@ -176,8 +172,6 @@ jobs:
         clean: true # Automatically remove deleted files from the deploy branch
         target-folder: prs/${{ matrix.value.number }}/storybook # The folder that we serve our Storybook files from 
     
-
-    # Build job
   build-jekyll-site:
     name: Build Jekyll Site
     needs: [build-storybook-for-each-pr, build-storybook-main]
