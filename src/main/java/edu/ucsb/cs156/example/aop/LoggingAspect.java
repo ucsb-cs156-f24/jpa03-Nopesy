@@ -18,8 +18,8 @@ import java.util.Optional;
 
 /**
  * This class is an Aspect that logs all invocations of controller methods that are annotated
- * with @RequestMapping, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping,
- * or @PatchMapping.
+ * with {@code @RequestMapping}, {@code @GetMapping}, {@code @PostMapping}, {@code @PutMapping}, {@code @DeleteMapping},
+ * or {@code @PatchMapping}.
  * 
  * For more information on Aspect Oriented Programming (AOP)
  * and AspectJ, including what a JoinPoint is, 
@@ -45,8 +45,8 @@ public class LoggingAspect {
 
   /**
    * This method is called before any controller method that is annotated with
-   * @RequestMapping, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping,
-   * or @PatchMapping.
+   * {@code @RequestMapping}, {@code @GetMapping}, {@code @PostMapping}, {@code @PutMapping}, {@code @DeleteMapping},
+   * or {@code @PatchMapping}.
    * @param joinPoint
    */
 
