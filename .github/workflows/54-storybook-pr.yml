@@ -18,7 +18,7 @@ permissions:
   id-token: write
 
 jobs: 
-  get-pr-num
+  get-pr-num:
     name: Get PR Number
     runs-on: ubuntu-latest
     outputs:
