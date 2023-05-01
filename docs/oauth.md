@@ -5,9 +5,12 @@ This Spring Boot application is set up to use Google OAuth as its authentication
 If this is your first time setting up a Google OAuth application in this course, you may need to do three steps.
 Later in the course, you'll only need to do the last of these, three, since the first two are typically "one-time" only steps.
 
-1. One time only: Set up a project in the Google Developer Console: <https://ucsb-cs156.github.io/topics/oauth/google_create_developer_project.html>
-2. One time only: Set up an OAuth Consent Screen for your project: <https://ucsb-cs156.github.io/topics/oauth/google_oauth_consent_screen.html>
-3. Once for each application: Create a set of OAuth credentials (`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` values): <https://ucsb-cs156.github.io/topics/oauth/oauth_google_setup.html>
+1. One time only: Set up a project in the Google Developer Console: 
+   - <https://ucsb-cs156.github.io/topics/oauth/google_create_developer_project.html>
+2. One time only: Set up an OAuth Consent Screen for your project: 
+   - <https://ucsb-cs156.github.io/topics/oauth/google_oauth_consent_screen.html>
+3. Once for each application: Create a set of OAuth credentials (`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` values): 
+   - <https://ucsb-cs156.github.io/topics/oauth/oauth_google_setup.html>
 
 Once you have created the OAuth Credentials, you'll need to
 configure your application with these values.
