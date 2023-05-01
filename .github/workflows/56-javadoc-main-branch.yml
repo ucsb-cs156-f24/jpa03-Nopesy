@@ -1,6 +1,4 @@
-# Creates/Resets the gh-pages branch to the intended start state
-
-name: "54-javadoc-main-branch: Update javadoc when main branch changes"
+name: "56-javadoc-main-branch: Update javadoc when main branch changes"
 on:
   workflow_dispatch:
   push:
