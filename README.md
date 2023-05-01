@@ -37,7 +37,9 @@ The `npm start` command may open up a web browser with the app running on port <
 * You should *close this window* and work in one where you put in the url <http://localhost:8080>.  
 * The <http://localhost:3000> window has a frontend that is *not connected to the backend* and most
   functions in that window will fail to work.
-* If you want to avoid this useless browser window opening up, you can type this in place of `npm start`:
+* If you want to avoid this useless browser window opening up, <br />
+  instead of `npm start`, type this:
+
   ```
   BROWSER=none npm start
   ```
