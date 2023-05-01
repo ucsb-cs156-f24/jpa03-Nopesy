@@ -127,6 +127,7 @@ jobs:
       matrix:
         value: ${{ fromJSON(needs.get-pull-requests.outputs.pull_requests)}}
 
+    steps:
     - name: Checkout repo
       uses: actions/checkout@v3
       with:
