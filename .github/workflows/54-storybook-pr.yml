@@ -33,7 +33,7 @@ jobs:
          echo "pull_number=${pull_number}" 
          echo "pull_number=${pull_number}" >> "$GITHUB_OUTPUT"
     - name: Figure out Branch name
-        run: | 
+      run: | 
           GITHUB_HEAD_REF="${GITHUB_HEAD_REF}"
           echo GITHUB_HEAD_REF=${GITHUB_HEAD_REF}
           GITHUB_REF_CLEANED=${GITHUB_REF/refs\/heads\//}
