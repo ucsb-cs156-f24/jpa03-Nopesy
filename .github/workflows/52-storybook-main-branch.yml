@@ -1,4 +1,5 @@
 # Creates/Resets the gh-pages branch to the intended start state
+
 name: "52-storybook-main-branch: Update storybook when main branch changes"
 on:
   workflow_dispatch:
