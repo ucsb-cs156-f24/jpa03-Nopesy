@@ -3,6 +3,7 @@
 
 ## Documentation
 
+* [Javadoc](javadoc)
 * [Storybook](storybook)
 
 ## Open Pull Requests
