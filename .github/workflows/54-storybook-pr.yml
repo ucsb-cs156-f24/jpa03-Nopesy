@@ -52,7 +52,7 @@ jobs:
 
     steps:
     - name: Debugging output
-      run: -
+      run: |
         echo "pr_number=${{needs.get-pr-num.outputs.pr_number}}"
         echo "branch_name=${{needs.get-pr-num.outputs.branch_name}}"
     - name: Checkout repo
