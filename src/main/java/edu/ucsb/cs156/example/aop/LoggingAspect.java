@@ -39,6 +39,13 @@ public class LoggingAspect {
   private ArrayList<String> stoplist = new ArrayList<String>(Arrays.asList(
       "edu.ucsb.cs156.example.controllers.FrontendProxyController"));
 
+  /**
+   * This method is called before any controller method that is annotated with
+   * @RequestMapping, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping,
+   * or @PatchMapping.
+   * @param joinPoint
+   */
+
   @Before(pointcut)
   public void logControllers(JoinPoint joinPoint) {
     getCurrentHttpRequest().ifPresent(
