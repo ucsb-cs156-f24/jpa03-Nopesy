@@ -53,7 +53,6 @@ jobs:
 
     strategy:
       matrix:
-        pull_request: [  ]
         include: 
           - pull_request: ${{ fromJSON(needs.get-pr-num.outputs.pull_request) }}
           
