@@ -56,6 +56,7 @@ jobs:
       run: |
         echo "pr_number=${{needs.get-pr-num.outputs.pr_number}}"
         echo "pull_request=${{needs.get-pr-num.outputs.pull_request}}"
+        echo "branch_name=${{needs.get-pr-num.outputs.pull_request.headRefName}}"
     - name: Checkout repo
       uses: actions/checkout@v3
       with:
