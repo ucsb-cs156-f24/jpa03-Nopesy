@@ -39,3 +39,9 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 {% endfor %}
 </tbody>
 </table>
+
+**Note**: If links in the PR tables don't work, note the following:
+* Storybook links will not be updated for PRs that do not touch the frontend code.
+* Javadoc links will not be updated for PRs that do not touch the backend code.
+* If a link doesn't work when you expect that it should, check that the appropriate [Github Actions](https://github.com/{{site.repo}}/actions) workflow completed successfully.
+* You can also check the contents of the [gh-pages branch of this repo](https://github.com/{{site.repo}}/tree/gh-pages) to see if they were updated with the appropriate directory.
