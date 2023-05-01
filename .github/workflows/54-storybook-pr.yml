@@ -53,8 +53,10 @@ jobs:
 
     strategy:
       matrix:
-        value: [ ${{ fromJSON(needs.get-pr-num.outputs.pull_request) }} ]
-
+        pull_request: [  ]
+        include: 
+          - pull_request: ${{ fromJSON(needs.get-pr-num.outputs.pull_request) }}
+          
     steps:
     - name: Needs Debugging output
       run: |
@@ -63,12 +65,12 @@ jobs:
   
     - name: Matrix Debugging Output
       run: |
-        echo "matrix.value: ${{ matrix.value }}"
-        echo "matrix.value.url: ${{ matrix.value.url }}"
-        echo "matrix.value.author: ${{ matrix.value.author }}"
-        echo "matrix.value.number: ${{ matrix.value.number }}"
-        echo "matrix.value.title:  ${{ matrix.value.title }}"
-        echo "matrix.value.headRefName:  ${{ matrix.value.headRefName }}"
+        echo "matrix.pull_request: ${{ matrix.pull_request }}"
+        echo "matrix.pull_request.url: ${{ matrix.pull_request.url }}"
+        echo "matrix.pull_request.author: ${{ matrix.pull_request.author }}"
+        echo "matrix.pull_request.number: ${{ matrix.pull_request.number }}"
+        echo "matrix.pull_request.title:  ${{ matrix.pull_request.title }}"
+        echo "matrix.pull_request.headRefName:  ${{ matrix.pull_request.headRefName }}"
 
   #   - name: Checkout repo
   #     uses: actions/checkout@v3
