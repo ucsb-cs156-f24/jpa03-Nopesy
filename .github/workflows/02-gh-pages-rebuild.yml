@@ -197,7 +197,7 @@ jobs:
     
   build-jekyll-site:
     name: Build Jekyll Site
-    needs: [build-storybook-for-each-pr, build-storybook-main]
+    needs: [build-storybook-for-each-pr, build-storybook-main, build-javadoc-main]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
