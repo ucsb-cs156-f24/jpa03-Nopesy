@@ -13,23 +13,19 @@ explain how to take care of that.
 
 # Steps
 
-1. Check whether the `gh-pages` branch exists.  This shows what it looks like when the branch exists:
-
-   ![gh-pages-exists](https://user-images.githubusercontent.com/1119017/235330875-bf0d1be7-7884-4bc0-839e-76f02836d7a9.gif)
-
-
-   If you don't see a branch called `gh-pages`, manually trigger the workflow `01-create-or-reset-gh-pages-branch` as shown here, and it will
-   create the branch:
+1. Enable Github Pages on the repo settings as shown below.
+   * Select `Settings`, then `Pages`, then change `Source` to `Github Actions`
    
-   ![run-action-to-estabilsh-gh-pages-branch](https://user-images.githubusercontent.com/1119017/235330809-fb80472c-44a7-4f5a-a6dd-bee2978de8f9.gif)
+   ![enable-gh-pages-workflow](https://user-images.githubusercontent.com/1119017/235544870-58cc4dfe-b23e-4718-a23a-ef335f4fce2a.gif)
 
-2. Once the `gh-pages` branch exists, go to the `Settings` for the repo, and enable GitHub pages as shown below:
 
-   * Navigate to `Pages` from the left nav
-   * Select the `gh-pages` branch, and the Root directory, and save the settings:
+2. Go to the `Actions` menu, and launch workflow `02-gh-pages-rebuild` as shown. This may take a few minutes to run.
+   It will create the Github Pages site for the repo, with links to documentation for both the backend (javadoc) and
+   frontend (storybook).
    
-   ![enable-gh-pages](https://user-images.githubusercontent.com/1119017/235330927-d39ca5a4-dfaf-4763-b442-d71cd9badc54.gif)
+   ![run-workflow-02](https://user-images.githubusercontent.com/1119017/235545108-e6da1791-5a29-44e9-a8f8-ff4e7a6b889b.gif)
 
+  
 3. Return to the main page for the repo,  click on the gear at right, and click the box for Github Pages, as shown below
    
    ![add-gh-pages-link](https://user-images.githubusercontent.com/1119017/235330985-1d181d00-c775-4c93-aec1-87414467e0ed.gif)
