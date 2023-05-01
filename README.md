@@ -1,24 +1,17 @@
-# demo-spring-react-example-v2: dsre-v2
+# STARTER-jpa03
 
-Storybook is here:
-* Production: <https://ucsb-cs156-f22.github.io/STARTER-jpa03-docs/>
-* QA:  <https://ucsb-cs156-f22.github.io/STARTER-jpa03-docs-qa/>
+# Getting Started on localhost
 
-The GitHub actions script to deploy the Storybook to QA requires some configuration; see [docs/github-actions.md](docs/github-actions.md) for details.
+Before running the application for the first time on localhost, you must: 
 
-If these repos are not yet setup, see the setup steps in [`docs/storybook.md`](docs/storybook.md).
-
-# Setup before running application
-
-Before running the application for the first time,
-you need to do the steps documented in [`docs/oauth.md`](docs/oauth.md).
+* Set up Google OAuth as documented in [`docs/oauth.md`](docs/oauth.md) 
 
 Otherwise, when you try to login for the first time, you 
 will likely see an error such as:
 
 <img src="https://user-images.githubusercontent.com/1119017/149858436-c9baa238-a4f7-4c52-b995-0ed8bee97487.png" alt="Authorization Error; Error 401: invalid_client; The OAuth client was not found." width="400"/>
 
-# Getting Started on localhost
+Then:
 
 * Open *two separate terminal windows*  
 * In the first window, start up the backend with:
@@ -39,34 +32,26 @@ If it doesn't work at first, e.g. you have a blank page on  <http://localhost:80
 If you see the following on localhost, make sure that you also have the frontend code running in a separate window.
 
 ```
-Failed to connect to the frontend server... On Heroku, be sure that PRODUCTION is defined.  On localhost, open a second terminal window, cd into frontend and type: npm install; npm start";
+Failed to connect to the frontend server... On Dokku, be sure that PRODUCTION is defined.  On localhost, open a second terminal window, cd into frontend and type: npm install; npm start";
 ```
 
-# Getting Started on Heroku
+# Getting Started on Dokku
 
-On Heroku, you'll need to set the following configuration variable:
-
-* Using the Heroku CLI:
-  ```
-  heroku config:set PRODUCTION=true --app <heroku app name>
-  ```
-* Or set it on the Heroku Dashboard:
-  ![image](https://user-images.githubusercontent.com/1119017/149855768-7b56164a-98f7-4357-b877-da34b7bd9ea4.png)
-
-You'll also need to follow the OAuth set up instructions here: [`docs/oauth.md`](docs/oauth.md).
-
-If you get the following message on Heroku, it probably means that you failed to setup the `PRODUCTION` environment variable.
-
-```
-Failed to connect to the frontend server... On Heroku, be sure that PRODUCTION is defined.  On localhost, open a second terminal window, cd into frontend and type: npm install; npm start";
-```
+* Follow the steps here: <https://ucsb-cs156.github.io/topics/dokku/getting_started.html>
+* Set up Google OAuth as documented in [`docs/oauth.md`](docs/oauth.md) 
+* Set up Postgres, as documented in  [`docs/postgres-database.md`](docs/postgres-database.md)
+* Set the config variable `PRODUCTION=true`
 
 # Accessing swagger
 
-To access the swagger API endpoints, use:
+Swagger is a tool that allows you to work directly with the RESTful API endpoints of the backend.
+It is similar to the tool Postman, but more convenient because it is built directly into the application.
+
+To access the Swagger API endpoints, use:
 
 * <http://localhost:8080/swagger-ui/index.html>
 
+You can also append `/swagger-ui/index.html` to the URL manually when running on Dokku.
 
 # To run React Storybook
 
@@ -75,7 +60,10 @@ To access the swagger API endpoints, use:
 * This should put the storybook on http://localhost:6006
 * Additional stories are added under frontend/src/stories
 
-* For documentation on React Storybook, see: https://storybook.js.org/
+There are also Github Actions to publish the storybook on the Github Pages site associated with the repo;
+see [/docs/github-pages.md](/docs/github-pages.md) for more info.
+
+* For documentation on React Storybook, see: <https://storybook.js.org/>
 
 # SQL Database access
 
@@ -85,7 +73,6 @@ On localhost:
 * You can access the database console via a special route, <http://localhost:8080/h2-console>
 * For more info, see [docs/h2-database.md](/docs/h2-database.md)
 
-On Heroku:
-* The SQL database is a postgres database provisioned automatically by Heroku
-* You can reset it with `heroku pg:reset --app app-name-goes-here`
-* More info and instructions for access the SQL prompt are at [docs/postgres-database.md](/docs/postgres-database.md)
+On Dokku:
+* The SQL database is a postgres database provisioned automatically by Dokku
+* More info and instructions for accessing the SQL prompt are at [docs/postgres-database.md](/docs/postgres-database.md)
