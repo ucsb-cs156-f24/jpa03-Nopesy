@@ -148,9 +148,9 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages # The branch the action should deploy to.
-        folder: target/site/apidocs # The folder that the build-storybook script generates files.
+        folder: target/site/apidocs # The folder where mvn javadoc:javadoc puts the files
         clean: true # Automatically remove deleted files from the deploy branch
-        target-folder: prs/${{ matrix.value.number }}/javadoc # The folder that we serve our Storybook files from 
+        target-folder: prs/${{ matrix.value.number }}/javadoc # The folder that we serve our javadoc files from 
 
   build-storybook-main:
     name: Storybook (main branch)
