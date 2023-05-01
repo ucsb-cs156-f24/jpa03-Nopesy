@@ -22,7 +22,7 @@ import java.util.Optional;
  * or {@code @PatchMapping}.
  * 
  * For more information on Aspect Oriented Programming (AOP)
- * and AspectJ, including what a JoinPoint is, 
+ * and AspectJ, including what a {@code JoinPoint} is, 
  * refer to <a href="https://www.baeldung.com/aspectj">https://www.baeldung.com/aspectj</a> 
  */
 
