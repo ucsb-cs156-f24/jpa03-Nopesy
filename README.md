@@ -24,8 +24,25 @@ Then:
   npm install  # only on first run or when dependencies change
   npm start
   ```
+  
+  
+  ```
 
-Then, the app should be available on <http://localhost:8080>
+The app should be available on <http://localhost:8080>
+
+### Note: <http://localhost:8080> not <http://localhost:3000> 
+
+The `npm start` command may open up a web browser with the app running on port <http://localhost:3000>.
+
+* You should *close this window* and work in one where you put in the url <http://localhost:8080>.  
+* The <http://localhost:3000> window has a frontend that is *not connected to the backend* and most
+  functions in that window will fail to work.
+* If you want to avoid this useless browser window opening up, you can type this in place of `npm start`:
+  ```
+  BROWSER=none npm start
+  ```
+  
+### What if it doesn't work?
 
 If it doesn't work at first, e.g. you have a blank page on  <http://localhost:8080>, give it a minute and a few page refreshes.  Sometimes it takes a moment for everything to settle in.
 
@@ -61,7 +78,7 @@ You can also append `/swagger-ui/index.html` to the URL manually when running on
 # To run React Storybook
 
 * cd into frontend
-* use: npm run storybook
+* use: `npm run storybook`
 * This should put the storybook on http://localhost:6006
 * Additional stories are added under frontend/src/stories
 
@@ -69,6 +86,17 @@ There are also Github Actions to publish the storybook on the Github Pages site 
 see [/docs/github-pages.md](/docs/github-pages.md) for more info.
 
 * For documentation on React Storybook, see: <https://storybook.js.org/>
+
+# To generate javadoc
+
+* cd to top level of repo
+* use: `mvn javadoc:javadoc`
+* open in a web browser: `target/site/apidocs/index.html`
+
+There are also Github Actions to publish the javadoc on the Github Pages site associated with the repo;
+see [/docs/github-pages.md](/docs/github-pages.md) for more info.
+
+* For documentation on Javadoc, see: <https://www.oracle.com/java/technologies/javase/javadoc-tool.html>
 
 # SQL Database access
 
