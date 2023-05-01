@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       pr_number: ${{ steps.get-pr-num.outputs.pr_number }}
-      branch_name: ${{ steps.get-pr-num.outputs.pr_number }}
+      branch_name: ${{ steps.get-pr-num.outputs.branch_name }}
     steps:
     - name: Get PR number
       id: get-pr-num
@@ -83,7 +83,6 @@ jobs:
         clean: true # Automatically remove deleted files from the deploy branch
         target-folder: prs/${{ needs.get-pr-num.outputs.pr_number }}/storybook # The folder that we serve our Storybook files from 
   
-
   build-jekyll-site:
     name: Build Jekyll Site
     needs: [build-storybook-for-this-pr]
