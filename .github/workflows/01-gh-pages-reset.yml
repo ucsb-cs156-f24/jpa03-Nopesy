@@ -8,7 +8,9 @@ env:
   GH_TOKEN: ${{ github.token }}
 
 permissions:
-  contents: write  # Needed for JamesIves/github-pages-deploy-action@v4
+  contents: write
+  pages: write
+  id-token: write
 
 jobs: 
   build-basic-site:
