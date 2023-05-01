@@ -84,7 +84,6 @@ jobs:
         branch: gh-pages
         clean: false # Automatically remove deleted files from the deploy branch
 
-    
   build-jekyll-site:
     name: Build Jekyll Site
     needs: [build-basic-site]
