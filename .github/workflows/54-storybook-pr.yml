@@ -53,7 +53,7 @@ jobs:
 
     strategy:
       matrix:
-        value: ${{ fromJSON(needs.get-pr-num.outputs.pull_request) }} 
+        value: [ ${{ fromJSON(needs.get-pr-num.outputs.pull_request) }} ]
 
     steps:
     - name: Needs Debugging output
