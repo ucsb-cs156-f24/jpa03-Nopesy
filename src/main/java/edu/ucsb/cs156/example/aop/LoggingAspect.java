@@ -15,6 +15,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
+
+/**
+ * This class is an Aspect that logs all invocations of controller methods that are annotated
+ * with @RequestMapping, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping,
+ * or @PatchMapping.
+ */
+
 @Slf4j
 @Aspect
 @Component
