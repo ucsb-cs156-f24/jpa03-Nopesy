@@ -63,7 +63,7 @@ cd into frontend and type: npm install; npm start";
 
 * Follow the steps here: <https://ucsb-cs156.github.io/topics/dokku/getting_started.html>
 * Set up Google OAuth as documented in [`docs/oauth.md`](docs/oauth.md) 
-* Set up Postgres, as documented in  [`docs/postgres-database.md`](docs/postgres-database.md)
+* Set up Postgres, as documented in  <https://ucsb-cs156.github.io/topics/dokku/postgres_database.html>
 * Set the config variable `PRODUCTION=true`
 
 # Accessing swagger
