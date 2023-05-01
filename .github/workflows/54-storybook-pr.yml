@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       pr_number: ${{ steps.get-pr-num.outputs.pr_number }}
-      branch_name: ${{ steps.get-pr-num.outputs.branch_name }}
+      branch_name: ${{ steps.get-pr-num.outputs.pull_request }}
     steps:
     - name: Get PR number
       id: get-pr-num
@@ -32,18 +32,13 @@ jobs:
          pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
          echo "pr_number=${pr_number}" 
          echo "pr_number=${pr_number}" >> "$GITHUB_OUTPUT"
-    - name: Figure out Branch name
-      run: | 
-          GITHUB_HEAD_REF="${GITHUB_HEAD_REF}"
-          echo GITHUB_HEAD_REF=${GITHUB_HEAD_REF}
-          GITHUB_REF_CLEANED=${GITHUB_REF/refs\/heads\//}
-          echo GITHUB_REF_CLEANED=${GITHUB_REF_CLEANED}
-          GITHUB_REF_CLEANED=${GITHUB_REF_CLEANED//\//-}
-          echo GITHUB_REF_CLEANED=${GITHUB_REF_CLEANED}
-          BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_CLEANED}}"
-          echo "branch_name=${BRANCH}"
-          echo "branch_name=${BRANCH}" >> "$GITHUB_OUTPUT"
-
+    - name: Get full PR info
+      run: |
+          gh pr view 3 --json url,author,number,title,headRefName > pr.json
+          cat pr.json
+          pull_request=`cat pr.json`
+          echo "pull_request=${pull_request}"
+          echo "pull_request=${pull_request}" >> "$GITHUB_OUTPUT"
 
   build-storybook-for-this-pr:
     name: Build Storybook for PR
@@ -54,11 +49,11 @@ jobs:
     - name: Debugging output
       run: |
         echo "pr_number=${{needs.get-pr-num.outputs.pr_number}}"
-        echo "branch_name=${{needs.get-pr-num.outputs.branch_name}}"
+        echo "branch_name=${{needs.get-pr-num.outputs.pull_request.headRefName}}"
     - name: Checkout repo
       uses: actions/checkout@v3
       with:
-        ref: ${{ needs.get-pr-num.outputs.branch_name }}
+        ref: ${{ needs.get-pr-num.outputs.pull_request.headRefName }}
         fetch-depth: 1
         token: ${{ github.token }}
 
