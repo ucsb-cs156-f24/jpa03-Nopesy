@@ -1,4 +1,4 @@
-name: "02-gh-pages-rebuild: Rebuild entire gh-pages branch for main and all open PRs"
+name: "02-gh-pages-rebuild-with-open-prs: Rebuild entire gh-pages branch for main and all open PRs"
 on:
   workflow_dispatch:
 
@@ -231,7 +231,7 @@ jobs:
     
   build-jekyll-site:
     name: Build Jekyll Site
-    needs: [build-storybook-for-each-pr, build-storybook-main, build-javadoc-main]
+    needs: [build-storybook-for-each-pr, build-storybook-main, build-javadoc-for-each-pr, build-javadoc-main]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
