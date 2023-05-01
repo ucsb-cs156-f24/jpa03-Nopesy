@@ -20,6 +20,10 @@ import java.util.Optional;
  * This class is an Aspect that logs all invocations of controller methods that are annotated
  * with @RequestMapping, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping,
  * or @PatchMapping.
+ * 
+ * For more information on Aspect Oriented Programming (AOP)
+ * and AspectJ, including what a JoinPoint is, 
+ * refer to <a href="https://www.baeldung.com/aspectj">https://www.baeldung.com/aspectj</a> 
  */
 
 @Slf4j
