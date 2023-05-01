@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       pr_number: ${{ steps.get-pr-num.outputs.pr_number }}
-      branch_name: ${{ steps.get-pr-num.outputs.pull_request }}
+      pull_request: ${{ steps.get-pr-num.outputs.pull_request }}
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
