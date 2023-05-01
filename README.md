@@ -33,7 +33,9 @@ If you see the following on localhost, make sure that you also have the frontend
 
 ```
 Failed to connect to the frontend server... 
-On Dokku, be sure that PRODUCTION is defined.  
+
+On Dokku, be sure that PRODUCTION is defined. 
+
 On localhost, open a second terminal window, 
 cd into frontend and type: npm install; npm start";
 ```
