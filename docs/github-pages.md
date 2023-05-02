@@ -1,17 +1,18 @@
 # Github Pages
 
-This repo is setup to publish documentation to a `gh-pages`
-branch that forms the basis of a GitHub pages site.
+This repo contains Github Actions workflows (under the `.github/workflows` directory) that
+can automatically publish documentation to a `gh-pages` branch, and publish documentation
+for the code on the Github Pages site associated with the repo.
 
-This file explains how to set up GitHub pages to publish
-that documentation.
+This file explains the necessary one-time setup steps to publish this documentation.
 
-You might get a red X on the GitHub actions that
-work with GitHub pages when you first push the starter
-code for this repo to a new repo; the instructions below
-explain how to take care of that.
+After that, the scripts should keep it automatically up-to-date, but if you need to manually regenerate it, the information
+below explains how to do that.
 
-# Steps
+When you first pull from this repo into another one, you might get a red X on the Github actions that publish the Github pages site;
+following the instructions below should take care of that.
+
+# Steps to setup Github Pages for this repo
 
 1. Enable Github Pages on the repo settings as shown below.
    * Select `Settings`, then `Pages`, then change `Source` to `Github Actions`
@@ -35,7 +36,15 @@ explain how to take care of that.
 
    <img width="910" alt="image" src="https://user-images.githubusercontent.com/1119017/235750584-2e66dc07-12b3-4593-a289-7e2f2b2060c2.png">
 
-As you add pull requests, the javadoc and storybook will be generated for those as well by GitHub Actions scripts.  
+# Keeping the site up to date
+
+As you add pull requests, the javadoc and storybook will be generated for those as well by GitHub Actions scripts. 
+
+Note that:
+* The javadoc is only generated when there is a change to the backend code (either files under `src/` or the `pom.xml` file)
+* The storybook is only generated when there is a change to the frontend code (files under `frontend/`)
+
+# Regenerating the site
 
 If at any point, you want to rebuild the entire documentation site, you can run the GitHub Action `02-gh-pages-rebuild`
 again.
