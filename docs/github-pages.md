@@ -39,7 +39,23 @@ following the instructions below should take care of that.
    for the main branch begin working; but within a minute or two of the  `02-gh-pages-rebuild` finishing both links should
    work.
 
-   <img width="910" alt="image" src="https://user-images.githubusercontent.com/1119017/235750584-2e66dc07-12b3-4593-a289-7e2f2b2060c2.png">
+   <img width="500" alt="image" src="https://user-images.githubusercontent.com/1119017/235750584-2e66dc07-12b3-4593-a289-7e2f2b2060c2.png">
+   
+   
+# What should it look like?
+
+When it works, the top level page should look something like this:
+
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/235764245-af5360e9-3e6e-4fe8-b69a-f79213febded.png">
+
+The javadoc should look something like this:
+
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/235764018-3de19026-bab8-4308-93bf-7cad2679cbf6.png">
+
+The storybook should look something like this:
+
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/235764128-e705b51d-761c-48df-963b-a354a1c0a575.png">
+
 
 # Keeping the site up to date
 
