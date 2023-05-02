@@ -58,11 +58,28 @@ ADMIN_EMAILS=phtcon@ucsb.edu
 
 Replace `see-instructions` with the appropriate values.
 
-For ADMIN_EMAILS, add your own email and any teammates you are collaborating with after phtcon.ucsb.edu; you can separate multiple emails with commas, e.g.
+# Setting up `ADMIN_EMAILS`
+
+The `ADMIN_EMAILS` value is used to determine which users have access to administrative features in the app.  One of those
+is the ability to list the users that have logged in.
+
+For `ADMIN_EMAILS`, add your own email and any teammates you are collaborating with after phtcon.ucsb.edu; you can separate multiple emails with commas, e.g.
 
 ```
-ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.edu,ldelplaya@ucsb.edu
+`ADMIN_EMAILS=phtcon@ucsb.edu, cgaucho@ucsb.edu, ldelplaya@ucsb.edu`
 ```
+
+*Do not separate emails with spaces*; only commas:
+* ❌ WRONG: `ADMIN_EMAILS=phtcon@ucsb.edu, cgaucho@ucsb.edu, ldelplaya@ucsb.edu`
+* ✅ Correct: `ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.edu,ldelplaya@ucsb.edu`
+
+* Add your own UCSB email address
+* Add `phtcon@ucsb.edu` (your instructor)
+* Add the mentor for your team (look up the mentor's name on the course team listing, then ask them in your channel)
+* Add everyone else on your team
+
+I suggest that, as a team, you collaborate in your team slack channel on getting a standard list of these, and then
+that you pin that post in your team slack channel for easy reference.
 
 With this done, you should be all set to run on localhost.
 
