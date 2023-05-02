@@ -33,6 +33,11 @@ following the instructions below should take care of that.
 
 4. Check that the link loads the Github Pages site.  It should look something like this, but with your repo name in place
    of the one shown.
+   
+   If it doesn't come up right away, check to see whether the  `02-gh-pages-rebuild`  has finished yet.  You may find that
+   it takes a minute or two for the page to become available, and another minute or two before the `javadoc` and `storybook` links
+   for the main branch begin working; but within a minute or two of the  `02-gh-pages-rebuild` finishing both links should
+   work.
 
    <img width="910" alt="image" src="https://user-images.githubusercontent.com/1119017/235750584-2e66dc07-12b3-4593-a289-7e2f2b2060c2.png">
 
