@@ -1,5 +1,12 @@
 # STARTER-jpa03
 
+<p style="background-color:yellow">
+TODO: Change link below from the example running app to your own running app, e.g. `https://jpa03-cgaucho.dokku-13.cs.ucsb.edu`.
+Then remove this entire `<p>` element.
+</p>
+
+Running at: <https://starter-jpa03.dokku-00.cs.ucsb.edu>
+
 # Configuring GitHub Pages for the documentation
 
 This repo contains Github Actions scripts that automatically create and publish documentation for the code:
