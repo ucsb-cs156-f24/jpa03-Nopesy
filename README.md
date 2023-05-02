@@ -6,7 +6,7 @@ This repo contains Github Actions scripts that automatically create and publish 
 * javadoc for the backend Java code
 * Storybook for the frontend React code
 
-To set this up, follow the instructions here: [`\docs/github-pages.md`](docs/github-pages.md)
+To set this up, follow the instructions here: [`docs/github-pages.md`](docs/github-pages.md)
 
 # Getting Started on localhost
 
