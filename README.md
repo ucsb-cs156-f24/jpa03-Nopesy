@@ -1,9 +1,9 @@
 # STARTER-jpa03
 
-<p>
+```
 TODO: Change link below from the example running app to your own running app, e.g. `https://jpa03-cgaucho.dokku-13.cs.ucsb.edu`.
-Then remove this entire `<p>` element.
-</p>
+Then remove this TODO item.
+```
 
 Running at: <https://starter-jpa03.dokku-00.cs.ucsb.edu>
 
