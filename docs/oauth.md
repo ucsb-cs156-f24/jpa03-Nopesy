@@ -66,7 +66,7 @@ is the ability to list the users that have logged in.
 For `ADMIN_EMAILS`, add your own email and any teammates you are collaborating with after phtcon.ucsb.edu; you can separate multiple emails with commas, e.g.
 
 ```
-`ADMIN_EMAILS=phtcon@ucsb.edu, cgaucho@ucsb.edu, ldelplaya@ucsb.edu`
+`ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.edu,ldelplaya@ucsb.edu`
 ```
 
 *Do not separate emails with spaces*; only commas:
