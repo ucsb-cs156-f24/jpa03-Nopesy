@@ -173,6 +173,8 @@ describe("utils/currentUser tests", () => {
 
         test('hasRole(x,"ROLE_ADMIN") returns correct values when currentUser has data then root', async () => {
             expect(hasRole({ loggedIn: true, data: { root: { rolesList: [] } }}, "ROLE_ADMIN")).toBeFalsy();
+            expect(hasRole({ loggedIn: true, data: { root: { rolesList: ["ROLE_ADMIN"] } }}, "ROLE_ADMIN")).toBeTruthy();
+            expect(hasRole({ loggedIn: true, data: { root: null }}, "ROLE_ADMIN")).toBeFalsy();
         });
     });
 });
