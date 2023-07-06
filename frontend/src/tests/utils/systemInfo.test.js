@@ -12,7 +12,7 @@ const { _MemoryRouter } = jest.requireActual('react-router-dom');
 
 describe("utils/systemInfo tests", () => {
     describe("useSystemInfo tests", () => {
-        test("test useSystemInfo retrieves initial data ", async () => {
+        test("useSystemInfo retrieves initial data", async () => {
             const queryClient = new QueryClient();
             const wrapper = ({ children }) => (
                 <QueryClientProvider client={queryClient}>
@@ -46,7 +46,7 @@ describe("utils/systemInfo tests", () => {
             restoreConsole();
         });
 
-        test("test useSystemInfo retrieves data from API ", async () => {
+        test("useSystemInfo retrieves data from API", async () => {
 
             const queryClient = new QueryClient();
             const wrapper = ({ children }) => (
@@ -68,7 +68,7 @@ describe("utils/systemInfo tests", () => {
 
         });
 
-        test("test systemInfo when API unreachable ", async () => {
+        test("systemInfo when API unreachable", async () => {
 
             const queryClient = new QueryClient();
             const wrapper = ({ children }) => (

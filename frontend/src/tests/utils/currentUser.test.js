@@ -15,7 +15,7 @@ const { MemoryRouter } = jest.requireActual('react-router-dom');
 
 describe("utils/currentUser tests", () => {
     describe("useCurrentUser tests", () => {
-        test("test useCurrentUser retrieves initial data ", async () => {
+        test("useCurrentUser retrieves initial data", async () => {
             const queryClient = new QueryClient();
             const wrapper = ({ children }) => (
                 <QueryClientProvider client={queryClient}>
@@ -45,7 +45,7 @@ describe("utils/currentUser tests", () => {
             restoreConsole();
         });
 
-        test("test useCurrentUser retrieves data from API ", async () => {
+        test("useCurrentUser retrieves data from API", async () => {
 
             const queryClient = new QueryClient();
             const wrapper = ({ children }) => (
@@ -68,7 +68,7 @@ describe("utils/currentUser tests", () => {
 
         });
 
-        test("test useCurrentUser when API unreachable ", async () => {
+        test("useCurrentUser when API unreachable", async () => {
 
             const queryClient = new QueryClient();
             const wrapper = ({ children }) => (
@@ -93,7 +93,7 @@ describe("utils/currentUser tests", () => {
             queryClient.clear();
         });
 
-        test("test useCurrentUser handles missing roles correctly ", async () => {
+        test("useCurrentUser handles missing roles correctly", async () => {
 
             const queryClient = new QueryClient();
             const wrapper = ({ children }) => (
@@ -122,7 +122,7 @@ describe("utils/currentUser tests", () => {
 
     });
     describe("useLogout tests", () => {
-        test("useLogout  ", async () => {
+        test("useLogout", async () => {
             const queryClient = new QueryClient();
             const wrapper = ({ children }) => (
                 <QueryClientProvider client={queryClient}>

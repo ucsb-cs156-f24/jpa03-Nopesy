@@ -32,7 +32,7 @@ describe("utils/useBackend tests", () => {
  
     describe("utils/useBackend useBackend tests", () => {
 
-        test("test useBackend handles 404 error correctly", async () => {
+        test("useBackend handles 404 error correctly", async () => {
 
             // See: https://react-query.tanstack.com/guides/testing#turn-off-retries
             const queryClient = new QueryClient({
@@ -68,8 +68,8 @@ describe("utils/useBackend tests", () => {
 
         });
     });
-    describe("utils/useBackend useBackend tests", () => {
-        test("test useBackendMutation handles success correctly", async () => {
+    describe("utils/useBackend useBackendMutation tests", () => {
+        test("useBackendMutation handles success correctly", async () => {
 
             // See: https://react-query.tanstack.com/guides/testing#turn-off-retries
             const queryClient = new QueryClient({
@@ -124,7 +124,7 @@ describe("utils/useBackend tests", () => {
             await waitFor(() => expect(onSuccess).toHaveBeenCalled());
             expect(mockToast).toHaveBeenCalledWith("New ucsbDate Created - id: 17 name: Groundhog Day");
         });
-        test("test useBackendMutation handles error correctly", async () => {
+        test("useBackendMutation handles error correctly", async () => {
 
 
             // See: https://react-query.tanstack.com/guides/testing#turn-off-retries

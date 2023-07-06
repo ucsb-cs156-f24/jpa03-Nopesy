@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { render, waitFor , screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import AdminUsersPage from "main/pages/AdminUsersPage";
@@ -27,7 +27,7 @@ describe("AdminUsersPage tests", () => {
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/admin/users").reply(200, usersFixtures.threeUsers);
 
-        const { getByText } = render(
+       render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AdminUsersPage />
@@ -35,11 +35,8 @@ describe("AdminUsersPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByText("Users")).toBeInTheDocument());
-
-        await waitFor(() => expect(getByText("Users")).toBeInTheDocument());
-
-
+        await screen.findByText("Users");
+        await screen.findByText("Users");
     });
 
     test("renders empty table when backend unavailable", async () => {
@@ -48,7 +45,7 @@ describe("AdminUsersPage tests", () => {
 
         const restoreConsole = mockConsole();
 
-        const { queryByTestId } = render(
+        render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
                     <AdminUsersPage />
@@ -62,7 +59,7 @@ describe("AdminUsersPage tests", () => {
         expect(errorMessage).toMatch("Error communicating with backend via GET on /api/admin/users");
         restoreConsole();
 
-        expect(queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
+        expect(screen.queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
 
     });
 
