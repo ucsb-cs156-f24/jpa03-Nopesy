@@ -1,4 +1,4 @@
-# Github Pages
+<img width="1307" alt="image" src="https://github.com/ucsb-cs156-m23/STARTER-jpa03/assets/1119017/96f6126e-50e6-43fb-a4d3-3789c300a293"># Github Pages
 
 This repo contains Github Actions workflows (under the `.github/workflows` directory) that
 can automatically publish documentation to a `gh-pages` branch, and publish documentation
@@ -27,18 +27,21 @@ following the instructions below should take care of that.
 
    If `gh-pages` is not an option, then perform the next step where you launch workflow `02-gh-pages-rebuild` first, then try this step again.
 
-3. Go to the `Actions` menu, and launch workflow `02-gh-pages-rebuild` as shown. This may take a few minutes to run.
+3. Go to the `Actions` menu, and launch workflow `02-gh-pages-rebuild-part-1` as shown. You
+   * select the job in the left hand navigation,
+   * click on right where it says 'Run workflow'
+   * then select `main` branch and click the green `Run Workflow` button
+   
+   <img width="1307" alt="Run Workflow: 02-gh-pages-rebuild-part-1" src="https://github.com/ucsb-cs156-m23/STARTER-jpa03/assets/1119017/fb506c1f-dc95-4e33-9cfa-f91324705c87">
+
    It will create the Github Pages site for the repo, with links to documentation for both the backend (javadoc) and
    frontend (storybook).
-   
-   ![run-workflow-02](https://user-images.githubusercontent.com/1119017/235545108-e6da1791-5a29-44e9-a8f8-ff4e7a6b889b.gif)
-
   
-4. Return to the main page for the repo,  click on the gear at right, and click the box for Github Pages, as shown below
+3. Return to the main page for the repo,  click on the gear at right, and click the box for Github Pages, as shown below
    
    ![add-gh-pages-link](https://user-images.githubusercontent.com/1119017/235330985-1d181d00-c775-4c93-aec1-87414467e0ed.gif)
 
-5. Check that the link loads the Github Pages site.  It should look something like this, but with your repo name in place
+4. Check that the link loads the Github Pages site.  It should look something like this, but with your repo name in place
    of the one shown.
    
    If it doesn't come up right away, check to see whether the  `02-gh-pages-rebuild`  has finished yet.  You may find that
