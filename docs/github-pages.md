@@ -1,4 +1,4 @@
-<img width="1307" alt="image" src="https://github.com/ucsb-cs156-m23/STARTER-jpa03/assets/1119017/96f6126e-50e6-43fb-a4d3-3789c300a293"># Github Pages
+# Github Pages
 
 This repo contains Github Actions workflows (under the `.github/workflows` directory) that
 can automatically publish documentation to a `gh-pages` branch, and publish documentation
