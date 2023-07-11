@@ -22,7 +22,7 @@ public class FrontendProxyController {
         String instructions = """
                 <p>Failed to connect to the frontend server...</p>
                 <p>On Heroku or Dokku, be sure that <code>PRODUCTION</code> is defined.</p>
-                <p>On localhost, open a second terminal window, cd into <code>frontend</code> and type: <code>npm install; npm start</code></p>
+                <p>On localhost, open a second terminal window, cd into <code>frontend</code> and type: <code>nvm use 16.20.0; npm install; npm start</code></p>
                 <p>Or, you may click to access: </p>
                 <ul>
                   <li><a href='/swagger-ui/index.html'>/swagger-ui/index.html</a></li>
