@@ -52,32 +52,6 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
               }
             </Nav>
 
-            <Nav className="mr-auto">
-              {
-                hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="Todos" id="appnavbar-todos-dropdown" data-testid="appnavbar-todos-dropdown" >
-                    <NavDropdown.Item href="/todos/list">List Todos</NavDropdown.Item>
-                    <NavDropdown.Item href="/todos/create">Create Todo</NavDropdown.Item>
-                  </NavDropdown>
-                )
-              }
-            </Nav>
-
-            <Nav className="mr-auto">
-              {
-                hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="UCSBDates" id="appnavbar-ucsbdates-dropdown" data-testid="appnavbar-ucsbdates-dropdown" >
-                    <NavDropdown.Item href="/ucsbdates/list" data-testid="appnavbar-ucsbdates-list">List</NavDropdown.Item>
-                    {
-                      hasRole(currentUser, "ROLE_ADMIN") && (
-                        <NavDropdown.Item href="/ucsbdates/create" data-testid="appnavbar-ucsbdates-create">Create</NavDropdown.Item>
-                      )
-                    }
-                  </NavDropdown>
-                )
-              }
-            </Nav>
-
             <Nav className="ml-auto">
               {
                 currentUser && currentUser.loggedIn ? (

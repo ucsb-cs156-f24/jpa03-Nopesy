@@ -65,23 +65,7 @@ describe("AppNavbar tests", () => {
     });
 
 
-    test("renders the todos menu correctly", async () => {
-
-        const currentUser = currentUserFixtures.userOnly;
-        const systemInfo = systemInfoFixtures.showingBoth;
-
-        const doLogin = jest.fn();
-
-       render(
-            <QueryClientProvider client={queryClient}>
-                <MemoryRouter>
-                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
-                </MemoryRouter>
-            </QueryClientProvider>
-        );
-
-        await screen.findByTestId("appnavbar-todos-dropdown");
-    });
+   
 
     test("renders the AppNavbarLocalhost when on http://localhost:3000", async () => {
 
@@ -144,56 +128,6 @@ describe("AppNavbar tests", () => {
         expect(screen.queryByTestId(/AppNavbarLocalhost/i)).toBeNull();
     });
 
-    test("renders the ucsbdates menu correctly for a user", async () => {
-
-        const currentUser = currentUserFixtures.userOnly;
-        const systemInfo = systemInfoFixtures.showingBoth;
-
-        const doLogin = jest.fn();
-
-        render(
-            <QueryClientProvider client={queryClient}>
-                <MemoryRouter>
-                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
-                </MemoryRouter>
-            </QueryClientProvider>
-        );
-
-        await screen.findByTestId("appnavbar-ucsbdates-dropdown");
-        const dropdown = screen.getByTestId("appnavbar-ucsbdates-dropdown");
-        /* eslint-disable testing-library/no-node-access */
-        const aElement = dropdown.querySelector("a");
-        expect(aElement).toBeInTheDocument();
-        aElement?.click();
-        await screen.findByTestId("appnavbar-ucsbdates-list");
-        /* eslint-enable testing-library/no-node-access */
-
-    });
-
-    test("renders the ucsbdates menu correctly for an admin", async () => {
-
-        const currentUser = currentUserFixtures.adminUser;
-        const systemInfo = systemInfoFixtures.showingBoth;
-
-        const doLogin = jest.fn();
-
-        render(
-            <QueryClientProvider client={queryClient}>
-                <MemoryRouter>
-                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
-                </MemoryRouter>
-            </QueryClientProvider>
-        );
-
-        await screen.findByTestId("appnavbar-ucsbdates-dropdown");
-        const dropdown = screen.getByTestId("appnavbar-ucsbdates-dropdown");
-        /* eslint-disable testing-library/no-node-access */
-        const aElement = dropdown.querySelector("a");
-        expect(aElement).toBeInTheDocument();
-        aElement?.click();
-        await screen.findByTestId(/appnavbar-ucsbdates-create/);
-        /* eslint-enable testing-library/no-node-access */
-    });
 });
 
 
