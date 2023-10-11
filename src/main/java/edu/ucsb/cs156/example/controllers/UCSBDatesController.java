@@ -2,9 +2,8 @@ package edu.ucsb.cs156.example.controllers;
 
 import edu.ucsb.cs156.example.entities.UCSBDate;
 import edu.ucsb.cs156.example.repositories.UCSBDateRepository;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;import io.swagger.v3.oas.annotations.Parameter;
 import lombok.extern.slf4j.Slf4j;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,7 +28,7 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@Api(description = "UCSBDates")
+@Tag(name = "UCSBDates")
 @RequestMapping("/api/ucsbdates")
 @RestController
 @Slf4j
@@ -57,7 +56,7 @@ public class UCSBDatesController extends ApiController {
     @Autowired
     ObjectMapper mapper;
 
-    @ApiOperation(value = "List all ucsb dates")
+    @Operation(summary = "List all ucsb dates")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
     public Iterable<UCSBDate> allUCSBDates() {
@@ -65,11 +64,11 @@ public class UCSBDatesController extends ApiController {
         return dates;
     }
 
-    @ApiOperation(value = "Get a single date")
+    @Operation(summary = "Get a single date")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public ResponseEntity<String> getById(
-            @ApiParam("id") @RequestParam Long id) throws JsonProcessingException {
+            @Parameter(name="id") @RequestParam Long id) throws JsonProcessingException {
         UCSBDateOrError uoe = new UCSBDateOrError(id);
 
         uoe = doesUCSBDateExist(uoe);
@@ -81,13 +80,13 @@ public class UCSBDatesController extends ApiController {
         return ResponseEntity.ok().body(body);
     }
 
-    @ApiOperation(value = "Create a new date")
+    @Operation(summary = "Create a new date")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public ResponseEntity<String> postUCSBDate(
-            @ApiParam("quarterYYYYQ") @RequestParam String quarterYYYYQ,
-            @ApiParam("name") @RequestParam String name,
-            @ApiParam("date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
+            @Parameter(name="quarterYYYYQ") @RequestParam String quarterYYYYQ,
+            @Parameter(name="name") @RequestParam String name,
+            @Parameter(name="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
             throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) 
@@ -106,11 +105,11 @@ public class UCSBDatesController extends ApiController {
     }
 
 
-    @ApiOperation(value = "Delete a UCSBDate")
+    @Operation(summary = "Delete a UCSBDate")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
     public ResponseEntity<String> deleteUCSBDate(
-            @ApiParam("id") @RequestParam Long id) {
+            @Parameter(name="id") @RequestParam Long id) {
         UCSBDateOrError uoe = new UCSBDateOrError(id);
 
         uoe = doesUCSBDateExist(uoe);
@@ -122,11 +121,11 @@ public class UCSBDatesController extends ApiController {
         return ResponseEntity.ok().body(String.format("UCSBDate with id %d deleted", id));
     }
 
-    @ApiOperation(value = "Update a single date")
+    @Operation(summary = "Update a single date")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public ResponseEntity<String> updateUCSBDate(
-            @ApiParam("id") @RequestParam Long id,
+            @Parameter(name="id") @RequestParam Long id,
             @RequestBody @Valid UCSBDate incoming) throws JsonProcessingException {
         UCSBDateOrError uoe = new UCSBDateOrError(id);
 
