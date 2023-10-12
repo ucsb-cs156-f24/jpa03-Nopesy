@@ -35,7 +35,7 @@ configure your application with these values.
 
 ## Step 1: Set up `.env` values for `localhost`
 
-In the frontend directory, use this command to copy `.env.SAMPLE` to `.env`.  Recall that you
+In the top level directory, use this command to copy `.env.SAMPLE` to `.env`.  Recall that you
 may need to use `ls -a` to get the files to show up, since they are hidden files on Unix-like systems.
 
 ```
