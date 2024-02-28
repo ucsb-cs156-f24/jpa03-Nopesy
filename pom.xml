@@ -108,6 +108,19 @@
 
     <build>
         <plugins>
+
+            <!-- This fixes a problem as explained in this SO article:
+            https://stackoverflow.com/a/61936537/13960329
+            -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                  <!-- Activate the use of TCP to transmit events to the plugin -->
+                  <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory"/>
+                </configuration>
+              </plugin>
+          
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
