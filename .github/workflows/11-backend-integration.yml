@@ -25,7 +25,5 @@ jobs:
          java-version-file: ./.java-version
   
     - name: Run tests with Maven
-      env:
-        TEST_PROPERTIES: ${{ secrets.TEST_PROPERTIES }}
-      run: mvn -B failsafe:integration-test 
+      run: mvn -B test-compile failsafe:integration-test 
       
