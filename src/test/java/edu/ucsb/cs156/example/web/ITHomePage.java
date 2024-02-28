@@ -26,7 +26,7 @@ import edu.ucsb.cs156.example.testconfig.TestConfig;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ITSimplePlaywrightTest {
+class ITHomePage {
     @LocalServerPort
     private int port;
 

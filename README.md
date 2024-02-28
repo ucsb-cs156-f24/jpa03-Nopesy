@@ -134,8 +134,9 @@ On Dokku:
 # Testing
 
 * To run unit tests, use: `mvn test`
-  - Unit tests are any methods labelled with the `@Test` annotation that are under the `/src/test/java` hierarchy.  (It may also matter that the file name ends in `Test` or `Tests`).
-  - Integration tests *also* run when you do `mvn test`.  This may be a consequence of naming the file with `Test` or `Tests` at the end of the file name.
+  - Unit tests are any methods labelled with the `@Test` annotation that are under the `/src/test/java` hierarchy, and have file names that end in `Test` or `Tests`
 * To run only the integration tests, use: `mvn failsafe:integration-test`
   - Integration tests are any methods labelled with `@Test` annotation, that are under the `/src/test/java` hierarchy, and have names starting with `IT` (specifically capital I, capital T).
   - By convention, we are putting Integration tests (the ones that run with Playwright) under the package `src/test/java/edu/ucsb/cs156/example/web`
+  - Unless you want a particular integration test to *also* be run when you type `mvn test`, do *not*
+  use the suffixes `Test` or `Tests` for the filename.
