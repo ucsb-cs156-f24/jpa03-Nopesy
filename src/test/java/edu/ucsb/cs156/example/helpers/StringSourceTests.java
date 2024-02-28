@@ -15,4 +15,13 @@ public class StringSourceTests  {
     assertTrue(stringSource instanceof StringSource);
   }
 
+  /**
+     * This is for pitest coverage
+     */
+
+     @Test
+     void test_nonBlank() {
+       assertTrue(StringSource.getDevelopmentDefaultLocalhostContent().length() > 0);
+     }
+
 }
