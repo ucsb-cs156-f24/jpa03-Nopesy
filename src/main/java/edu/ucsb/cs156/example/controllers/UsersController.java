@@ -14,6 +14,13 @@ import edu.ucsb.cs156.example.entities.User;
 import edu.ucsb.cs156.example.repositories.UserRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
+
+/**
+ * This is a REST controller for getting information about the users.
+ * 
+ * These endpoints are only accessible to users with the role "ROLE_ADMIN".
+ */
+
 @Tag(name="User information (admin only)")
 @RequestMapping("/api/admin/users")
 @RestController
@@ -24,6 +31,11 @@ public class UsersController extends ApiController {
     @Autowired
     ObjectMapper mapper;
 
+    /**
+     * This method returns a list of all users.  Accessible only to users with the role "ROLE_ADMIN".
+     * @return a list of all users
+     * @throws JsonProcessingException
+     */
     @Operation(summary = "Get a list of all users")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("")
