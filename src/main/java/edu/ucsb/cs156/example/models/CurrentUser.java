@@ -12,6 +12,10 @@ import edu.ucsb.cs156.example.entities.User;
 
 import java.util.Collection;
 
+/**
+ * This is a model class that represents the current user.
+ */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

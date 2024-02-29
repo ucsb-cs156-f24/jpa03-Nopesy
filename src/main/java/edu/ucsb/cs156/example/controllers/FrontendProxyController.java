@@ -9,6 +9,17 @@ import org.springframework.web.client.ResourceAccessException;
 
 import java.net.ConnectException;
 
+/**
+ * The FrontendProxyController is used to proxy requests to the frontend of the application.
+ * 
+ * This is only used in development where we have a separate frontend server process
+ * listening on port 3000.
+ * 
+ * For production, see the FrontendController.
+ * 
+ * @See edu.ucsb.cs156.example.controllers.FrontendController
+ */
+
 @Profile("development")
 @RestController
 public class FrontendProxyController {

@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 
+/**
+ * The TodoRepository is a repository for Todo entities.
+ */
+
 @Repository
 public interface TodoRepository extends CrudRepository<Todo, Long> {
   Optional<Todo> findByIdAndUser(long id, User user);
