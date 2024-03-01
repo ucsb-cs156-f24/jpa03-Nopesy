@@ -62,6 +62,12 @@ public class LoggingAspect {
         });
   }
 
+  /**
+   * The function `getCurrentHttpRequest` returns an `Optional` containing the current
+   * `HttpServletRequest` if available.
+   * 
+   * @return An Optional object containing the current HttpServletRequest, if available.
+   */
   private static Optional<HttpServletRequest> getCurrentHttpRequest() {
     return Optional.ofNullable(RequestContextHolder.getRequestAttributes())
         .filter(ServletRequestAttributes.class::isInstance)
