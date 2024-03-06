@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    * The `configure` method in this Java code configures various security settings for an HTTP request,
    * including authorization, exception handling, OAuth2 login, CSRF protection, and logout behavior.
    * 
-   * @param http 
+   * @param http injected HttpSecurity object (injected by Spring framework)
    */
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    * The `configure` method is used to configure web security in Java, specifically ignoring requests
    * to the "/h2-console/**" path.
    * 
-   * @param web 
+   * @param web injected by Spring Framework
    */
   @Override
   public void configure(WebSecurity web) throws Exception {

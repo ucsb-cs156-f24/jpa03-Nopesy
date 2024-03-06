@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * This is only enabled in the production profile, and is used to serve the frontend of the application.
  * For development, see the FrontendProxyController.
  * 
- * @See edu.ucsb.cs156.example.controllers.FrontendProxyController
+ * @see edu.ucsb.cs156.example.controllers.FrontendProxyController
  */
 
 @Profile("!development")
@@ -22,7 +22,7 @@ public class FrontendController {
    * Serve home page of application
    * @return the home page (via index.html)
    */
-  
+
   @GetMapping("/**/{path:[^\\.]*}")
   public String index() {
     return "forward:/index.html";

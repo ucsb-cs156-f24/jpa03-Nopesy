@@ -15,21 +15,11 @@ import org.springframework.stereotype.Service;
 @ConfigurationProperties
 public class SystemInfoServiceImpl extends SystemInfoService {
   
-  /**
-   * This method returns a boolean based on the value 'spring.h2.console.enabled' in the application properties
-   * for whether or not to display the link to the h2 console.
-   * 
-   * @return boolean
-   */ 
+
   @Value("${spring.h2.console.enabled:false}")
   private boolean springH2ConsoleEnabled;
 
-  /**
-   * This method returns a boolean based on the value 'app.showSwaggerUILink' in the application properties
-   * for whether or not to display the link to swagger-ui. 
-   * 
-   * @return boolean
-   */ 
+
   @Value("${app.showSwaggerUILink:false}")
   private boolean showSwaggerUILink;
 

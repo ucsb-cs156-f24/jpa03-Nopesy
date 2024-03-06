@@ -158,7 +158,7 @@ public class UCSBDatesController extends ApiController {
      * @param id       id of the date to update
      * @param incoming the new date
      * @return response entity with the updated date
-     * @throws JsonProcessingException
+     * @throws JsonProcessingException if there is an error processing the JSON
      */
     @Operation(summary = "Update a single date")
     @PreAuthorize("hasRole('ROLE_ADMIN')")

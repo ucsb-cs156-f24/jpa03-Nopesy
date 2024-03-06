@@ -8,8 +8,8 @@ public class EntityNotFoundException extends RuntimeException {
   /**
    * Constructor for the exception
    * 
-   * @param entityType
-   * @param id 
+   * @param entityType The class of the entity that was not found, e.g. User.class
+   * @param id the id that was being searched for
    */
   public EntityNotFoundException(Class<?> entityType, Object id) {
     super("%s with id %s not found"
