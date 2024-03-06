@@ -11,11 +11,30 @@ import edu.ucsb.cs156.example.helpers.StringSource;
 
 import java.net.ConnectException;
 
+/**
+ * The FrontendProxyController is used to proxy requests to the frontend of the application.
+ * 
+ * This is only used in development where we have a separate frontend server process
+ * listening on port 3000.
+ * 
+ * For production, see the FrontendController.
+ * 
+ * @see edu.ucsb.cs156.example.controllers.FrontendController
+ */
+
 @Profile("development")
 @RestController
 public class FrontendProxyController {
 
- 
+
+  /**
+   * This method proxies requests to the frontend server.  It is only used in development.
+   * The regular expression is used to exclude the paths that should NOT be proxied to the
+   * frontend server, such as the endpoints for the api, oauth2, and swagger-ui.
+   * 
+   * @param proxy the proxy exchange, injected by Spring automatically
+   * @return response entity with the response from the frontend server, or a response entity with instructions in case the frontend server cannot be reached.
+   */
 
   @GetMapping({"/", "/{path:^(?!api|oauth2|swagger-ui).*}/**"})
   public ResponseEntity<String> proxy(ProxyExchange<String> proxy) {
