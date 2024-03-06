@@ -79,7 +79,7 @@ public class UCSBDatesController extends ApiController {
      * 
      * @param id the id of the date
      * @return a UCSBDate
-     * @throws JsonProcessingException
+     * @throws JsonProcessingException if there is an error processing the JSON
      */
     @Operation(summary = "Get a single date")
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -104,7 +104,7 @@ public class UCSBDatesController extends ApiController {
      * @param name          the name of the date
      * @param localDateTime the date
      * @return a ResponseEntity with the new date
-     * @throws JsonProcessingException
+     * @throws JsonProcessingException if there is an error processing the JSON
      */
     @Operation(summary = "Create a new date")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -152,6 +152,14 @@ public class UCSBDatesController extends ApiController {
         return ResponseEntity.ok().body(String.format("UCSBDate with id %d deleted", id));
     }
 
+    /**
+     * Update a single date
+     * 
+     * @param id       id of the date to update
+     * @param incoming the new date
+     * @return response entity with the updated date
+     * @throws JsonProcessingException
+     */
     @Operation(summary = "Update a single date")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
@@ -177,16 +185,17 @@ public class UCSBDatesController extends ApiController {
     }
 
     /**
-     * Pre-conditions: uoe.id is value to look up, uoe.ucsbDate and uoe.error are
-     * null
+     * Pre-conditions: uoe.id is value to look up, 
+     * uoe.ucsbDate and uoe.error are null
      *
      * Post-condition: if UCSBDate with id uoe.id exists, uoe.ucsbDate now refers to
-     * it, and
-     * error is null.
+     * it, and error is null.
+     * 
      * Otherwise, UCSBDate with id uoe.id does not exist, and error is a suitable
-     * return
-     * value to
-     * report this error condition.
+     * return value to report this error condition.
+     * 
+     * @param uoe the UCSBDateOrError object
+     * @return the UCSBDateOrError object
      */
     public UCSBDateOrError doesUCSBDateExist(UCSBDateOrError uoe) {
 

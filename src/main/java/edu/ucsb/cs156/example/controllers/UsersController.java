@@ -34,7 +34,7 @@ public class UsersController extends ApiController {
     /**
      * This method returns a list of all users.  Accessible only to users with the role "ROLE_ADMIN".
      * @return a list of all users
-     * @throws JsonProcessingException
+     * @throws JsonProcessingException if there is an error processing the JSON
      */
     @Operation(summary = "Get a list of all users")
     @PreAuthorize("hasRole('ROLE_ADMIN')")

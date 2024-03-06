@@ -64,7 +64,7 @@ public class TodosController extends ApiController {
 
     /**
      * This method returns a single todo owned by the current user.
-     * @param id
+     * @param id id of the todo to get
      * @return a single todo owned by the current user
      */
     @Operation(summary = "Get a single todo (if it belongs to current user)")
@@ -81,7 +81,7 @@ public class TodosController extends ApiController {
 
     /**
      * This method returns a single todo regardless of ownership.  Accessible only to users with the role "ROLE_ADMIN".
-     * @param id
+     * @param id id of the todo to get
      * @return a single todo regardless of ownership
      */
     @Operation(summary = "Get a single todo (no matter who it belongs to, admin only)")
@@ -97,9 +97,9 @@ public class TodosController extends ApiController {
 
     /**
      * This method creates a new todo owned by the current user.
-     * @param title 
-     * @param details
-     * @param done
+     * @param title title of the todo
+     * @param details details of the todo
+     * @param done whether the todo has been done or not
      * @return the saved todo (with it's id field set by the database)
      */
     @Operation(summary = "Create a new Todo")
@@ -123,7 +123,7 @@ public class TodosController extends ApiController {
 
     /**
      * Delete a Todo owned by this user
-     * @param id
+     * @param id id of the todo to delete
      * @return a message indicating the todo was deleted
      */
     @Operation(summary = "Delete a Todo owned by this user")

@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
  * 
  * For more information see the SystemInfoService and SystemInfo classes.
  * 
- * @See edu.ucsb.cs156.example.services.SystemInfoService
- * @See edu.ucsb.cs156.example.models.SystemInfo
+ * @see edu.ucsb.cs156.example.services.SystemInfoService
+ * @see edu.ucsb.cs156.example.models.SystemInfo
  */
 
 @Tag(name = "System Information")

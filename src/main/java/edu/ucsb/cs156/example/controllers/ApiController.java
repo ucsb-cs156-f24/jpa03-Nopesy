@@ -31,7 +31,7 @@ public abstract class ApiController {
 
   /**
    * This method returns a generic message.
-   * @param message
+   * @param message the message
    * @return a map with the message
    */
   protected Object genericMessage(String message) {

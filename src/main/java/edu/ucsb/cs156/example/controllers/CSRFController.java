@@ -23,7 +23,7 @@ public class CSRFController {
 
   /**
    * This method returns a CSRF token.
-   * @param token
+   * @param token the CSRF token, injected by Spring automatically
    * @return the CSRF token
    */
   @Operation(summary = "Get a CSRF Token")
