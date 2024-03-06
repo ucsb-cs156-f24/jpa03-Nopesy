@@ -9,7 +9,7 @@ package edu.ucsb.cs156.example.helpers;
 public class StringSource {
   /**
    * 
-   * @returns a string with instructions on how to run the frontend server.
+   * @return a string with instructions on how to run the frontend server.
    *          This is used in development on
    *          localhost when the frontend server is not running.
    */
