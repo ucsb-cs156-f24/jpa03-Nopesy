@@ -10,11 +10,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.extern.slf4j.Slf4j;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.Optional;
+
+/**
+ * This is a REST controller for Todos 
+ */
 
 @Tag(name = "Todos")
 @RequestMapping("/api/todos")
@@ -37,6 +37,10 @@ public class TodosController extends ApiController {
     @Autowired
     TodoRepository todoRepository;
 
+    /**
+     * This method returns a list of all todos.  Accessible only to users with the role "ROLE_ADMIN".
+     * @return a list of all todos
+     */
     @Operation(summary = "List all todos")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/admin/all")
@@ -45,6 +49,10 @@ public class TodosController extends ApiController {
         return todos;
     }
 
+    /**
+     * This method returns a list of all todos owned by the current user.
+     * @return a list of all todos owned by the current user
+     */
     @Operation(summary = "List this user's todos")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
@@ -54,6 +62,11 @@ public class TodosController extends ApiController {
         return todos;
     }
 
+    /**
+     * This method returns a single todo owned by the current user.
+     * @param id id of the todo to get
+     * @return a single todo owned by the current user
+     */
     @Operation(summary = "Get a single todo (if it belongs to current user)")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
@@ -66,6 +79,11 @@ public class TodosController extends ApiController {
         return todo;
     }
 
+    /**
+     * This method returns a single todo regardless of ownership.  Accessible only to users with the role "ROLE_ADMIN".
+     * @param id id of the todo to get
+     * @return a single todo regardless of ownership
+     */
     @Operation(summary = "Get a single todo (no matter who it belongs to, admin only)")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/admin")
@@ -77,6 +95,13 @@ public class TodosController extends ApiController {
         return todo;
     }
 
+    /**
+     * This method creates a new todo owned by the current user.
+     * @param title title of the todo
+     * @param details details of the todo
+     * @param done whether the todo has been done or not
+     * @return the saved todo (with it's id field set by the database)
+     */
     @Operation(summary = "Create a new Todo")
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/post")
@@ -96,6 +121,11 @@ public class TodosController extends ApiController {
         return savedTodo;
     }
 
+    /**
+     * Delete a Todo owned by this user
+     * @param id id of the todo to delete
+     * @return a message indicating the todo was deleted
+     */
     @Operation(summary = "Delete a Todo owned by this user")
     @PreAuthorize("hasRole('ROLE_USER')")
     @DeleteMapping("")
@@ -111,6 +141,11 @@ public class TodosController extends ApiController {
 
     }
 
+    /** 
+     * Delete a Todo regardless of ownership, admin only
+     * @param id id of the todo to delete
+     * @return a message indicating the todo was deleted
+     */
     @Operation(summary = "Delete another user's todo")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/admin")
@@ -124,6 +159,12 @@ public class TodosController extends ApiController {
         return genericMessage("Todo with id %s deleted".formatted(id));
     }
 
+    /**
+     * Update a single todo (if it belongs to current user)
+     * @param id id of the todo to update
+     * @param incomingTodo the new todo contents
+     * @return the updated todo object
+     */
     @Operation(summary = "Update a single todo (if it belongs to current user)")
     @PreAuthorize("hasRole('ROLE_USER')")
     @PutMapping("")
@@ -143,6 +184,12 @@ public class TodosController extends ApiController {
         return todo;
     }
 
+    /**
+     * Update a single todo (regardless of ownership, admin only, can't change ownership)
+     * @param id id of the todo to update
+     * @param incomingTodo the new todo contents
+     * @return the updated todo object
+     */
     @Operation(summary = "Update a single todo (regardless of ownership, admin only, can't change ownership)")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/admin")

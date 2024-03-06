@@ -47,7 +47,7 @@ public class LoggingAspect {
    * This method is called before any controller method that is annotated with
    * {@code @RequestMapping}, {@code @GetMapping}, {@code @PostMapping}, {@code @PutMapping}, {@code @DeleteMapping},
    * or {@code @PatchMapping}.
-   * @param joinPoint
+   * @param joinPoint the join point (injected by Spring framework)
    */
 
   @Before(pointcut)
@@ -62,6 +62,12 @@ public class LoggingAspect {
         });
   }
 
+  /**
+   * The function `getCurrentHttpRequest` returns an `Optional` containing the current
+   * `HttpServletRequest` if available.
+   * 
+   * @return An Optional object containing the current HttpServletRequest, if available.
+   */
   private static Optional<HttpServletRequest> getCurrentHttpRequest() {
     return Optional.ofNullable(RequestContextHolder.getRequestAttributes())
         .filter(ServletRequestAttributes.class::isInstance)

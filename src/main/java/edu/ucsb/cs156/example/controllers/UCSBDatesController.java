@@ -3,7 +3,8 @@ package edu.ucsb.cs156.example.controllers;
 import edu.ucsb.cs156.example.entities.UCSBDate;
 import edu.ucsb.cs156.example.repositories.UCSBDateRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.Operation;import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.extern.slf4j.Slf4j;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -24,9 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-
 import java.time.LocalDateTime;
 import java.util.Optional;
+
+/**
+ * This is a REST controller for UCSBDates
+ */
 
 @Tag(name = "UCSBDates")
 @RequestMapping("/api/ucsbdates")
@@ -56,6 +60,12 @@ public class UCSBDatesController extends ApiController {
     @Autowired
     ObjectMapper mapper;
 
+    /**
+     * List all UCSB dates
+     * 
+     * @return an iterable of UCSBDate
+     */
+
     @Operation(summary = "List all ucsb dates")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
@@ -64,11 +74,18 @@ public class UCSBDatesController extends ApiController {
         return dates;
     }
 
+    /**
+     * Get a single date by id
+     * 
+     * @param id the id of the date
+     * @return a UCSBDate
+     * @throws JsonProcessingException if there is an error processing the JSON
+     */
     @Operation(summary = "Get a single date")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public ResponseEntity<String> getById(
-            @Parameter(name="id") @RequestParam Long id) throws JsonProcessingException {
+            @Parameter(name = "id") @RequestParam Long id) throws JsonProcessingException {
         UCSBDateOrError uoe = new UCSBDateOrError(id);
 
         uoe = doesUCSBDateExist(uoe);
@@ -80,16 +97,25 @@ public class UCSBDatesController extends ApiController {
         return ResponseEntity.ok().body(body);
     }
 
+    /**
+     * Create a new date
+     * 
+     * @param quarterYYYYQ  the quarter in the format YYYYQ
+     * @param name          the name of the date
+     * @param localDateTime the date
+     * @return a ResponseEntity with the new date
+     * @throws JsonProcessingException if there is an error processing the JSON
+     */
     @Operation(summary = "Create a new date")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public ResponseEntity<String> postUCSBDate(
-            @Parameter(name="quarterYYYYQ") @RequestParam String quarterYYYYQ,
-            @Parameter(name="name") @RequestParam String name,
-            @Parameter(name="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
+            @Parameter(name = "quarterYYYYQ") @RequestParam String quarterYYYYQ,
+            @Parameter(name = "name") @RequestParam String name,
+            @Parameter(name = "date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
             throws JsonProcessingException {
 
-        // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) 
+        // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
         // See: https://www.baeldung.com/spring-date-parameters
 
         log.info("localDateTime={}", localDateTime);
@@ -104,12 +130,17 @@ public class UCSBDatesController extends ApiController {
         return ResponseEntity.ok().body(json);
     }
 
-
+    /**
+     * Delete a UCSBDate
+     * 
+     * @param id the id of the date to delete
+     * @return a ResponseEntity with a message
+     */
     @Operation(summary = "Delete a UCSBDate")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
     public ResponseEntity<String> deleteUCSBDate(
-            @Parameter(name="id") @RequestParam Long id) {
+            @Parameter(name = "id") @RequestParam Long id) {
         UCSBDateOrError uoe = new UCSBDateOrError(id);
 
         uoe = doesUCSBDateExist(uoe);
@@ -121,11 +152,19 @@ public class UCSBDatesController extends ApiController {
         return ResponseEntity.ok().body(String.format("UCSBDate with id %d deleted", id));
     }
 
+    /**
+     * Update a single date
+     * 
+     * @param id       id of the date to update
+     * @param incoming the new date
+     * @return response entity with the updated date
+     * @throws JsonProcessingException if there is an error processing the JSON
+     */
     @Operation(summary = "Update a single date")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public ResponseEntity<String> updateUCSBDate(
-            @Parameter(name="id") @RequestParam Long id,
+            @Parameter(name = "id") @RequestParam Long id,
             @RequestBody @Valid UCSBDate incoming) throws JsonProcessingException {
         UCSBDateOrError uoe = new UCSBDateOrError(id);
 
@@ -146,16 +185,17 @@ public class UCSBDatesController extends ApiController {
     }
 
     /**
-     * Pre-conditions: uoe.id is value to look up, uoe.ucsbDate and uoe.error are
-     * null
+     * Pre-conditions: uoe.id is value to look up, 
+     * uoe.ucsbDate and uoe.error are null
      *
      * Post-condition: if UCSBDate with id uoe.id exists, uoe.ucsbDate now refers to
-     * it, and
-     * error is null.
+     * it, and error is null.
+     * 
      * Otherwise, UCSBDate with id uoe.id does not exist, and error is a suitable
-     * return
-     * value to
-     * report this error condition.
+     * return value to report this error condition.
+     * 
+     * @param uoe the UCSBDateOrError object
+     * @return the UCSBDateOrError object
      */
     public UCSBDateOrError doesUCSBDateExist(UCSBDateOrError uoe) {
 

@@ -12,6 +12,12 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+/**
+ * This is a JPA entity that represents a todo.
+ * 
+ * A "todo" is a task that a user wants to accomplish.
+ */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
