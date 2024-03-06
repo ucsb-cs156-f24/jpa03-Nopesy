@@ -130,3 +130,14 @@ On localhost:
 On Dokku:
 * The SQL database is a postgres database provisioned automatically by Dokku
 * More info and instructions for accessing the SQL prompt are at [docs/postgres-database.md](/docs/postgres-database.md)
+
+# Testing
+
+* To run unit tests, use: `mvn test`
+  - Unit tests are any methods labelled with the `@Test` annotation that are under the `/src/test/java` hierarchy, and have file names that end in `Test` or `Tests`
+* To run only the integration tests, use: `mvn test-compile failsafe:integration-test`
+  - Integration tests are any methods labelled with `@Test` annotation, that are under the `/src/test/java` hierarchy, and have names starting with `IT` (specifically capital I, capital T).
+  - By convention, we are putting Integration tests (the ones that run with Playwright) under the package `src/test/java/edu/ucsb/cs156/example/web`
+  - Unless you want a particular integration test to *also* be run when you type `mvn test`, do *not*
+  use the suffixes `Test` or `Tests` for the filename.
+  - Note that while `mvn test` is typically sufficient to run tests, we have found that if you haven't compiled the test code yet, running `mvn failsafe:integration-test` may not actually run any of the tests.

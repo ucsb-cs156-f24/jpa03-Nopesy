@@ -1,7 +1,7 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: "10-backend-unit: Java Unit tests"
+name: "11-backend-integration: Java Integration tests"
 
 on:
   workflow_dispatch:
@@ -24,6 +24,6 @@ jobs:
          distribution: semeru # See: https://github.com/actions/setup-java#supported-distributions
          java-version-file: ./.java-version
   
-    - name: Build with Maven
-      run: mvn -B test-compile test 
+    - name: Run tests with Maven
+      run: mvn -B test-compile failsafe:integration-test 
       

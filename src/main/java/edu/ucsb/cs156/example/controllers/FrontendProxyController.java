@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.ResourceAccessException;
 
+import edu.ucsb.cs156.example.helpers.StringSource;
+
 import java.net.ConnectException;
 
 /**
@@ -24,6 +26,7 @@ import java.net.ConnectException;
 @RestController
 public class FrontendProxyController {
 
+
   /**
    * This method proxies requests to the frontend server.  It is only used in development.
    * The regular expression is used to exclude the paths that should NOT be proxied to the
@@ -32,6 +35,7 @@ public class FrontendProxyController {
    * @param proxy the proxy exchange, injected by Spring automatically
    * @return response entity with the response from the frontend server, or a response entity with instructions in case the frontend server cannot be reached.
    */
+
   @GetMapping({"/", "/{path:^(?!api|oauth2|swagger-ui).*}/**"})
   public ResponseEntity<String> proxy(ProxyExchange<String> proxy) {
     String path = proxy.path("/");
@@ -39,17 +43,7 @@ public class FrontendProxyController {
       return proxy.uri("http://localhost:3000/" + path).get();
     } catch (ResourceAccessException e) {
       if (e.getCause() instanceof ConnectException) {
-        String instructions = """
-                <p>Failed to connect to the frontend server...</p>
-                <p>On Heroku or Dokku, be sure that <code>PRODUCTION</code> is defined.</p>
-                <p>On localhost, open a second terminal window, cd into <code>frontend</code> and type: <code>nvm use 16.20.0; npm install; npm start</code></p>
-                <p>Or, you may click to access: </p>
-                <ul>
-                  <li><a href='/swagger-ui/index.html'>/swagger-ui/index.html</a></li>
-                  <li><a href='/h2-console'>/h2-console</a></li>
-                </ul>""";
-
-        return ResponseEntity.ok(instructions);
+        return ResponseEntity.ok(StringSource.getDevelopmentDefaultLocalhostContent());
       }
       throw e;
     }
