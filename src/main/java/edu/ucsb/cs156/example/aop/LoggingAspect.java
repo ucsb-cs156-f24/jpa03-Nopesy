@@ -47,7 +47,7 @@ public class LoggingAspect {
    * This method is called before any controller method that is annotated with
    * {@code @RequestMapping}, {@code @GetMapping}, {@code @PostMapping}, {@code @PutMapping}, {@code @DeleteMapping},
    * or {@code @PatchMapping}.
-   * @param joinPoint
+   * @param joinPoint the join point (injected by Spring framework)
    */
 
   @Before(pointcut)
