@@ -1,9 +1,12 @@
 package edu.ucsb.cs156.example.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import edu.ucsb.cs156.example.services.wiremock.WiremockService;
 
 /**
  * The FrontendController is used to serve the frontend of the application.
@@ -18,6 +21,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FrontendController {
 
+  @Autowired
+  WiremockService wiremockService;
+  
   /**
    * Serve home page of application
    * @return the home page (via index.html)

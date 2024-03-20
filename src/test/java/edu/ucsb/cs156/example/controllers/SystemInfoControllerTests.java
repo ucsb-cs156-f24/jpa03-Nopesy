@@ -28,14 +28,14 @@ public class SystemInfoControllerTests extends ControllerTestCase {
   @Test
   public void systemInfo__logged_out() throws Exception {
     mockMvc.perform(get("/api/systemInfo"))
-        .andExpect(status().is(403));
+        .andExpect(status().is(200));
   }
 
   @WithMockUser(roles = { "USER" })
   @Test
   public void systemInfo__user_logged_in() throws Exception {
     mockMvc.perform(get("/api/systemInfo"))
-        .andExpect(status().is(403));
+        .andExpect(status().is(200));
   }
 
   @WithMockUser(roles = { "ADMIN", "USER" })
@@ -49,6 +49,7 @@ public class SystemInfoControllerTests extends ControllerTestCase {
         .builder()
         .showSwaggerUILink(true)
         .springH2ConsoleEnabled(true)
+        .oauthLogin("/oauth2/authorization/google")
         .build();
     when(mockSystemInfoService.getSystemInfo()).thenReturn(systemInfo);
     String expectedJson = mapper.writeValueAsString(systemInfo);
