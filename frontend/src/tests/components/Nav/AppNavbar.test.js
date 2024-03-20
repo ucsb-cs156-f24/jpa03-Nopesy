@@ -111,7 +111,6 @@ describe("AppNavbar tests", () => {
 
         const currentUser = currentUserFixtures.userOnly;
         const systemInfo = systemInfoFixtures.showingBoth;
-        const doLogin = jest.fn();
 
         delete window.location
         window.location = new URL('http://localhost:8080')
@@ -119,13 +118,29 @@ describe("AppNavbar tests", () => {
        render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} />
                 </MemoryRouter>
             </QueryClientProvider>
         );
 
         await screen.findByTestId("AppNavbar");
         expect(screen.queryByTestId(/AppNavbarLocalhost/i)).toBeNull();
+    });
+
+    test("when oauthlogin undefined, default value is used", async () =>  {
+        const currentUser = currentUserFixtures.notLoggedIn;
+        const systemInfo = systemInfoFixtures.oauthLoginUndefined;
+
+       render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await screen.findByText("Log In");
+        expect(screen.getByText("Log In")).toHaveAttribute("href", "/oauth2/authorization/google");
     });
 
 });
