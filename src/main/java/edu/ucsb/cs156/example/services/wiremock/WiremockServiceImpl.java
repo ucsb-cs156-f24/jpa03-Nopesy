@@ -18,9 +18,12 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathMatching;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 
-// This class relies on property values
-// For hints on testing, see: https://www.baeldung.com/spring-boot-testing-configurationproperties
-
+/**
+ * This is a service for mocking authentication using wiremock
+ * 
+ * This class relies on property values. For hints on testing, see: <a href="https://www.baeldung.com/spring-boot-testing-configurationproperties">https://www.baeldung.com/spring-boot-testing-configurationproperties</a>
+ * 
+ */
 @Slf4j
 @Service("wiremockService")
 @Profile("wiremock")
@@ -29,10 +32,18 @@ public class WiremockServiceImpl extends WiremockService {
 
   WireMockServer wireMockServer;
 
+  /**
+   * This method returns the wiremockServer
+   * @return the wiremockServer
+   */
   public WireMockServer getWiremockServer() {
     return wireMockServer;
   }
 
+  /**
+   * This method sets up the necessary mocks for authentication
+   * @param s in an instance of a WireMockServer or WireMockExtension
+   */
   public static void setupOauthMocks(Stubbing s) {
 
     s.stubFor(get(urlPathMatching("/oauth/authorize.*"))
@@ -67,6 +78,9 @@ public class WiremockServiceImpl extends WiremockService {
 
   }
 
+  /**
+   * This method initializes the WireMockServer 
+   */
   public void init() {
     log.info("WiremockServiceImpl.init() called");
 
