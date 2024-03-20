@@ -140,6 +140,7 @@
                         <exclude>**/edu/ucsb/cs156/example/controllers/FrontendProxyController.*</exclude>
                         <exclude>**/edu/ucsb/cs156/example/services/CurrentUserServiceImpl.*</exclude>
                         <exclude>**/edu/ucsb/cs156/example/ExampleApplication.*</exclude>
+                        <exclude>**/edu/ucsb/cs156/example/services/wiremock/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -227,8 +228,13 @@
                         <param>edu.ucsb.cs156.example.config.SecurityConfig</param>
                         <param>edu.ucsb.cs156.example.config.SecurityConfig.MyCsrfRequestMatcher</param>
                         <param>edu.ucsb.cs156.example.config.SpringFoxConfig</param>
+                        <param>edu.ucsb.cs156.example.services.wiremock.WiremockService</param>
+                        <param>edu.ucsb.cs156.example.services.wiremock.WiremockServiceDummy</param>
+                        <param>edu.ucsb.cs156.example.services.wiremock.WiremockServiceImpl</param>
                     </excludedClasses>
-                    <excludedTestClasses></excludedTestClasses>
+                    <excludedTestClasses>
+                        <param>edu.ucsb.cs156.example.web.*</param>
+                    </excludedTestClasses>
                     <outputFormats>
                         <outputFormat>HTML</outputFormat>
                         <outputFormat>CSV</outputFormat>

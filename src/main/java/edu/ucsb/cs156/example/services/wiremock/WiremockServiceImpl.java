@@ -1,4 +1,4 @@
-package edu.ucsb.cs156.example.services;
+package edu.ucsb.cs156.example.services.wiremock;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;

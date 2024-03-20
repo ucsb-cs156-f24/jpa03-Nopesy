@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import edu.ucsb.cs156.example.services.CurrentUserService;
 import edu.ucsb.cs156.example.services.GrantedAuthoritiesService;
-import edu.ucsb.cs156.example.services.WiremockService;
+import edu.ucsb.cs156.example.services.wiremock.WiremockService;
 import edu.ucsb.cs156.example.testconfig.TestConfig;
 import org.springframework.test.web.servlet.MvcResult;
 

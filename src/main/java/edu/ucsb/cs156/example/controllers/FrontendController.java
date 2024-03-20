@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import edu.ucsb.cs156.example.services.WiremockService;
+import edu.ucsb.cs156.example.services.wiremock.WiremockService;
 
 /**
  * The FrontendController is used to serve the frontend of the application.

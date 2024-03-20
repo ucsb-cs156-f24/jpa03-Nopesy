@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.ResourceAccessException;
 
 import edu.ucsb.cs156.example.helpers.StringSource;
-import edu.ucsb.cs156.example.services.WiremockService;
+import edu.ucsb.cs156.example.services.wiremock.WiremockService;
 
 import java.net.ConnectException;
 
