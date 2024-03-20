@@ -24,9 +24,11 @@ public class SystemInfoServiceImpl extends SystemInfoService {
   @Value("${spring.h2.console.enabled:false}")
   private boolean springH2ConsoleEnabled;
 
-
   @Value("${app.showSwaggerUILink:false}")
   private boolean showSwaggerUILink;
+
+  @Value("${app.oauth.login:/oauth2/authorization/google}")
+  private String oauthLogin;
 
   /**
    * This method returns the system information.
@@ -37,6 +39,7 @@ public class SystemInfoServiceImpl extends SystemInfoService {
     SystemInfo si = SystemInfo.builder()
     .springH2ConsoleEnabled(this.springH2ConsoleEnabled)
     .showSwaggerUILink(this.showSwaggerUILink)
+    .oauthLogin(this.oauthLogin)
     .build();
   log.info("getSystemInfo returns {}",si);
   return si;
