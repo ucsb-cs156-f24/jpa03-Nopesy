@@ -29,9 +29,8 @@ public class StringSource {
   /**
    * 
    * @return a string with the contents of the application's home page
-   *          during integration tests. It is identical to the
-   *          production homepage with the exception of the login
-   *          button routing to my-oauth-provider instead of google.
+   *          for use during integration tests. It is identical to the
+   *          production homepage.
    */
   public static String getIntegrationDefaultLocalhostContent() {
     return """
