@@ -22,6 +22,7 @@ public class StringSourceTests  {
      @Test
      void test_nonBlank() {
        assertTrue(StringSource.getDevelopmentDefaultLocalhostContent().length() > 0);
+       assertTrue(StringSource.getIntegrationDefaultLocalhostContent().length() > 0);
      }
 
 }
