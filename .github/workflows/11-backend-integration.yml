@@ -25,5 +25,5 @@ jobs:
          java-version-file: ./.java-version
   
     - name: Run tests with Maven
-      run: mvn -B test-compile failsafe:integration-test 
+      run: INTEGRATION=true mvn -B test-compile failsafe:integration-test 
       
