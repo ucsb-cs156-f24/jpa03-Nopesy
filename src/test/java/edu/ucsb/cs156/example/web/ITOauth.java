@@ -47,10 +47,10 @@ class ITOauth {
         WiremockServiceImpl.setupOauthMocks(wme);
 
         // Launch playwright browser headless
-        browser = Playwright.create().chromium().launch();
+        // browser = Playwright.create().chromium().launch();
 
         // Launch playwright browser with visual
-        // browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
 
         BrowserContext context = browser.newContext();
         page = context.newPage();
@@ -62,7 +62,7 @@ class ITOauth {
     }
 
     @Test
-    public void tryLogin() throws Exception {
+    public void tryLoginAndLogout() throws Exception {
         // Navigate straight to authorization url, since login button doesn't change href inside integration test
         String url = String.format("http://localhost:%d/oauth2/authorization/my-oauth-provider", port);
         page.navigate(url);
@@ -74,6 +74,8 @@ class ITOauth {
 
         assertThat(page.getByText("Log Out")).isVisible();
         assertThat(page.getByText("Welcome, cgaucho@ucsb.edu")).isVisible();
+        page.locator(".btn-primary").click();
+        assertThat(page.getByText("Log In")).isVisible();
     }
 
 }
