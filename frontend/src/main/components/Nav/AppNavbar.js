@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost"
 
-export default function AppNavbar({ currentUser, systemInfo, currentUrl = window.location.href }) {
+export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUrl = window.location.href }) {
   
   var oauthLogin = systemInfo?.oauthLogin || "/oauth2/authorization/google";
   return (
@@ -59,7 +59,7 @@ export default function AppNavbar({ currentUser, systemInfo, currentUrl = window
                 currentUser && currentUser.loggedIn ? (
                   <>
                     <Navbar.Text className="me-3" as={Link} to="/profile">Welcome, {currentUser.root.user.email}</Navbar.Text>
-                    <Button>Log Out</Button>
+                    <Button onClick={doLogout}>Log Out</Button>
                   </>
                 ) : (
                   <Button href={oauthLogin}>Log In</Button>
