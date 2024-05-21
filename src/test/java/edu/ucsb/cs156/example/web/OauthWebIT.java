@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
@@ -22,14 +23,18 @@ import com.microsoft.playwright.Playwright;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import edu.ucsb.cs156.example.services.wiremock.WiremockServiceImpl;
+
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("integration")
-class ITOauth {
+public class OauthWebIT {
     @LocalServerPort
     private int port;
+
+    @Value("${app.playwright.headless:true}")
+    private boolean runHeadless;
 
     private Browser browser;
     private Page page;
@@ -42,21 +47,23 @@ class ITOauth {
             .port(8090)
             .extensions(new ResponseTemplateTransformer(true)));
 
-        WiremockServiceImpl.setupOauthMocks(wireMockServer);
+        WiremockServiceImpl.setupOauthMocks(wireMockServer, false);
 
         wireMockServer.start();
+    }
+
+    @AfterAll
+    public static void teardownWiremock() {
+        wireMockServer.stop();
     }
     
     @BeforeEach
     public void setup() {
-        // Launch playwright browser headless
-        browser = Playwright.create().chromium().launch();
-
-        // Launch playwright browser with visual
-        // browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(runHeadless));
 
         BrowserContext context = browser.newContext();
         page = context.newPage();
+
     }
 
     @AfterEach
@@ -64,14 +71,8 @@ class ITOauth {
         browser.close();
     }
 
-    @AfterAll
-    public static void teardownWiremock() {
-        wireMockServer.shutdown();
-    }
-
     @Test
     public void tryLoginLogout() throws Exception {
-        // Navigate straight to authorization url, since login button doesn't change href inside integration test
         String url = String.format("http://localhost:%d/oauth2/authorization/my-oauth-provider", port);
         page.navigate(url);
 

@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 
 @SpringBootTest
-public class ITExample {
+public class ExampleIT {
     @Test
     public void testTest() throws Exception {
         assertTrue(true);
