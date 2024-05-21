@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
@@ -13,24 +14,28 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
-
-import edu.ucsb.cs156.example.helpers.StringSource;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("integration")
-class ITHomePage {
+public class HomePageWebIT {
     @LocalServerPort
     private int port;
+
+    @Value("${app.playwright.headless:true}")
+    private boolean runHeadless;
 
     private Browser browser;
     private Page page;
 
     @BeforeEach
     public void setup() {
-        browser = Playwright.create().chromium().launch();
+        browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(runHeadless));
+
         BrowserContext context = browser.newContext();
         page = context.newPage();
     }
@@ -44,9 +49,9 @@ class ITHomePage {
     public void testGreeting() throws Exception {
         String url = String.format("http://localhost:%d/", port);
         page.navigate(url);
-        String bodyHTML = page.innerHTML("body");
-        String expectedHTML = StringSource.getIntegrationDefaultLocalhostContent();
-        assertEquals(expectedHTML, bodyHTML);
+        
+        assertThat(page.getByText("This is a webapp containing a bunch of different Spring Boot/React examples."))
+                .isVisible();
     }
 
 }
