@@ -6,6 +6,7 @@ import edu.ucsb.cs156.example.repositories.UserRepository;
 import edu.ucsb.cs156.example.testconfig.TestConfig;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -24,6 +25,7 @@ import java.util.Arrays;
 
 @WebMvcTest(controllers = UsersController.class)
 @Import(TestConfig.class)
+@AutoConfigureDataJpa
 public class UsersControllerTests extends ControllerTestCase {
 
   @MockBean
