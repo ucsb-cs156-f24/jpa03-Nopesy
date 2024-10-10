@@ -25,5 +25,7 @@ jobs:
          java-version-file: ./.java-version
   
     - name: Build with Maven
-      run: mvn -B test-compile test 
+      env:
+        TEST_PROPERTIES: ${{ secrets.TEST_PROPERTIES }}
+      run: mvn -B test 
       

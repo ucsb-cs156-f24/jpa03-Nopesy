@@ -29,7 +29,6 @@ jobs:
   
     - name: Build with Maven
       env:
-        TEST_PROPERTIES: ${{ secrets.TEST_PROPERTIES }}
         PRODUCTION: true
       run: mvn -DskipTests clean dependency:list install
 
