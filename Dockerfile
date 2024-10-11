@@ -6,7 +6,7 @@ ENV NODE_VERSION=20.17.0
 RUN apk add curl
 RUN apk add bash
 RUN apk add maven
-RUN apk add --no-cache libstdc++
+RUN apk add --no-cache build-base g++ libstdc++
 RUN apk add --no-cache python3 py3-pip
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ENV NVM_DIR=/root/.nvm
