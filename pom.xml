@@ -222,9 +222,11 @@
                         <param>edu.ucsb.cs156.example.config.SecurityConfig</param>
                         <param>edu.ucsb.cs156.example.config.SecurityConfig.MyCsrfRequestMatcher</param>
                         <param>edu.ucsb.cs156.example.config.SpringFoxConfig</param>
+                        <param>du.ucsb.cs156.example.config.*</param>
                         <param>edu.ucsb.cs156.example.services.wiremock.WiremockService</param>
                         <param>edu.ucsb.cs156.example.services.wiremock.WiremockServiceDummy</param>
                         <param>edu.ucsb.cs156.example.services.wiremock.WiremockServiceImpl</param>
+                        <param>${app.package}.services.GrantedAuthoritiesService</param>
                     </excludedClasses>
                     <excludedTestClasses>
                         <param>edu.ucsb.cs156.example.web.*</param>
