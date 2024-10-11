@@ -8,12 +8,15 @@ RUN apk add bash
 RUN apk add maven
 RUN apk add --no-cache build-base g++ libstdc++
 RUN apk add --no-cache python3 py3-pip
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ENV NVM_DIR=/root/.nvm
-RUN . "$NVM_DIR/nvm.sh" && nvm install v${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+RUN nvm --version
+
+RUN . "$NVM_DIR/nvm.sh" && nvm install --lts
+RUN . "$NVM_DIR/nvm.sh" && nvm use --lts
+
+# RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
+# ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 
 RUN node --version
 RUN npm --version
