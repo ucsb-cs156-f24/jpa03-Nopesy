@@ -40,9 +40,6 @@ public class TodosControllerTests extends ControllerTestCase {
     @MockBean
     UserRepository userRepository;
 
-    // Authorization tests for /api/todos/admin/all
-
-    @WithMockUser(roles = {  })
     @Test
     public void api_todos_admin_all__logged_out__returns_403() throws Exception {
         mockMvc.perform(get("/api/todos/admin/all"))
