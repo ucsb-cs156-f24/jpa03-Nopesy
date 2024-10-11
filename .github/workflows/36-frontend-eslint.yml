@@ -3,10 +3,10 @@ name: "36-frontend-eslint: JavaScript style checking"
 on:
   workflow_dispatch:
   pull_request:
-    paths: [frontend/**]
+    paths: [frontend/**, .github/workflows/36-frontend-eslint.yml]
   push:
     branches: [main]
-    paths: [frontend/**]
+    paths: [frontend/**, .github/workflows/36-frontend-eslint.yml]
 
 jobs:
   lint:
@@ -17,11 +17,11 @@ jobs:
       - uses: szenius/set-timezone@v1.2
         with:
           timezoneLinux: "America/Los_Angeles"
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v4
         with: 
           fetch-depth: 2
       - name: Setup Node.js
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@v4
         with:
           node-version-file: 'frontend/package.json'
           cache: 'npm'
