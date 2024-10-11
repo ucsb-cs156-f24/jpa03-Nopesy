@@ -134,6 +134,7 @@
                         <exclude>**/edu/ucsb/cs156/example/services/CurrentUserServiceImpl.*</exclude>
                         <exclude>**/edu/ucsb/cs156/example/ExampleApplication.*</exclude>
                         <exclude>**/edu/ucsb/cs156/example/services/wiremock/*</exclude>
+                        <exclude>**/${app.packagePath}/services/GrantedAuthoritiesService.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
