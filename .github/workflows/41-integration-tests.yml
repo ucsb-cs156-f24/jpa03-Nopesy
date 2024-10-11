@@ -6,10 +6,10 @@ name: "41-integration-tests: Playwright Integration tests"
 on:
   workflow_dispatch:
   pull_request:
-    paths: [src/**, pom.xml, lombok.config]
+    paths: [src/**, pom.xml, lombok.config, .github/workflows/41-integration-tests.yml]
   push:
     branches: [ main ]
-    paths: [src/**, pom.xml, lombok.config]
+    paths: [src/**, pom.xml, lombok.config, .github/workflows/41-integration-tests.yml]
 
 jobs:
   build:
