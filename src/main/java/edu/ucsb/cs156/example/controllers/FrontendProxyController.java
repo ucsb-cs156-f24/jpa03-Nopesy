@@ -40,7 +40,7 @@ public class FrontendProxyController {
    */
 
   @GetMapping({"/", "/{path:^(?!api|oauth2|swagger-ui).*}/**"})
-  public ResponseEntity<String> proxy(ProxyExchange<String> proxy) {
+  public ResponseEntity<?> proxy(ProxyExchange<byte []> proxy) {
     String path = proxy.path("/");
     try {
       return proxy.uri("http://localhost:3000/" + path).get();
