@@ -19,6 +19,11 @@ This repo contains Github Actions scripts that automatically create and publish 
 
 To set this up, follow the instructions here: [`docs/github-pages.md`](docs/github-pages.md)
 
+# Configuring for Chromatic (Storybook)
+
+This repo is configured to publish documentation of its frontend React components using [Storybook](https://storybook.js.org/) at [Chromatic.com](https://www.chromatic.com/).  Some of the Github Actions
+will fail until you configure the repo with a `CHROMATIC_PROJECT_TOKEN` value.  For instructions, see: <https://ucsb-cs156.github.io/topics/chromatic/>.
+
 # Getting Started on localhost
 
 Before running the application for the first time on localhost, you must: 
