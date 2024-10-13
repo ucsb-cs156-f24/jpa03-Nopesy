@@ -56,7 +56,7 @@ following the instructions below should take care of that.
 
 When it works, the top level page should look something like this:
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/235764245-af5360e9-3e6e-4fe8-b69a-f79213febded.png">
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/60de1d4d-42aa-4ae1-b8e6-fba997bd1571">
 
 The javadoc should look something like this:
 
@@ -64,8 +64,10 @@ The javadoc should look something like this:
 
 The storybook should look something like this:
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/235764128-e705b51d-761c-48df-963b-a354a1c0a575.png">
+<img width="864" alt="image" src="https://github.com/user-attachments/assets/7f586b76-fbc6-4df8-8fc0-f99a145c413c">
 
+Note that the Storybook may not appear unless/until you update the `CHROMATIC_PROJECT_TOKEN` which is typically a later
+stage in the setup instructions documented here: <https://ucsb-cs156.github.io/topics/chromatic/>
 
 # Keeping the site up to date
 
