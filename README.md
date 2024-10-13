@@ -1,11 +1,5 @@
 # STARTER-jpa03
 
-<style>
-  code { white-space: pre; }
-  tt { white-space: pre; }
-  pre { white-space: pre; }
-</style>
-
 ```
 TODO: Change link below from the example running app to your own running app
 For example, you might change it to:
