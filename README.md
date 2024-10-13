@@ -1,5 +1,11 @@
 # STARTER-jpa03
 
+<style>
+  code { white-space: pre; }
+  tt { white-space: pre; }
+  pre { white-space: pre; }
+</style>
+
 ```
 TODO: Change link below from the example running app to your own running app
 For example, you might change it to:
@@ -89,6 +95,8 @@ cd into frontend and type: npm install; npm start";
 * Set up Google OAuth as documented in [`docs/oauth.md`](docs/oauth.md) 
 * Set up Postgres, as documented in  <https://ucsb-cs156.github.io/topics/dokku/postgres_database.html>
 * Set the config variable `PRODUCTION=true`
+* Be sure that you do: <tt>dokku git:set <i>appname</i> keep-git-dir true</tt> before doing <tt>dokku ps:rebuild <i>appname</i></tt>
+
 
 # Accessing swagger
 
