@@ -1,6 +1,16 @@
 # OAuth Setup
 
-This Spring Boot application is set up to use Google OAuth as its authentication scheme.
+This Spring Boot application is set up to use Google OAuth as it's authentication scheme.
+
+Setting this up on localhost requires the first two steps below; getting this to work on Heroku requires an additional third step.
+
+1. Obtaining a Google *client id* and *client secret*, which is
+   done at the [Google Developer Console](https://console.cloud.google.com/).
+2. Configuring the `.env` file with these values.
+3. Copying the `.env` values to the dokku app's configuration values.
+
+
+# OAuth Setup
 
 If this is your first time setting up a Google OAuth application in this course, you may need to do three steps.
 Later in the course, you'll only need to do the last of these, three, since the first two are typically "one-time" only steps.
@@ -17,7 +27,6 @@ configure your application with these values.
 
 * For `localhost`, those values go in the `.env` file (as explained below)
 * For Dokku, those values are set using `dokku config:set ...` (as explained below)
-
 
 # About the `.env` and `.env.SAMPLE` files.
 
