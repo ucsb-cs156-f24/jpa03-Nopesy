@@ -17,14 +17,18 @@ following the instructions below should take care of that.
 1. Go to the `Actions` menu, and launch workflow `02-gh-pages-rebuild-part-1` as shown. You
    * select the job in the left hand navigation,
    * click on right where it says 'Run workflow'
-   * then select `main` branch and click the green `Run Workflow` button
+   * then select `main` branch and click the green `Run Workflow` button **ONCE**.  **DO NOT CLICK IT TWICE**.  Note that it can take a long time for the display to update, and you may even need to refresh the page.  If you click the button twice (because you don't think it "heard you the first time"), it will just take longer and possible fail.
    
    <img width="1307" alt="Run Workflow: 02-gh-pages-rebuild-part-1" src="https://github.com/ucsb-cs156-m23/STARTER-jpa03/assets/1119017/fb506c1f-dc95-4e33-9cfa-f91324705c87">
+
+   You now need to wait for this job to finish, kick off job `04-gh-pages-rebuild-part-2`, and then complete.
 
    It will create the Github Pages site for the repo, with links to documentation for both the backend (javadoc) and
    frontend (storybook).
 
-2. Enable Github Pages on the repo settings as shown below.
+   It is not unusual for this job to fail (have a red X) the first time you run it.  Use the `Rerun Failed Jobs` option to just rerun the parts that failed.
+
+3. Enable Github Pages on the repo settings as shown below.
 
    Select `Settings`, then `Pages`, then change:
    * `Source` to `Deploy from a branch`
@@ -35,11 +39,11 @@ following the instructions below should take care of that.
    
    <img width="606" alt="image" src="https://github.com/ucsb-cs156-m23/STARTER-jpa03/assets/1119017/4b762858-0b2d-42ad-a778-94680c50015a">
   
-3. Return to the main page for the repo,  click on the gear at right, and click the box for Github Pages, as shown below
+4. Return to the main page for the repo,  click on the gear at right, and click the box for Github Pages, as shown below
    
    ![add-gh-pages-link](https://user-images.githubusercontent.com/1119017/235330985-1d181d00-c775-4c93-aec1-87414467e0ed.gif)
 
-4. Check that the link loads the Github Pages site.  It should look something like this, but with your repo name in place
+5. Check that the link loads the Github Pages site.  It should look something like this, but with your repo name in place
    of the one shown.
    
    If it doesn't come up right away, check to see whether the  `02-gh-pages-rebuild`  has finished yet.  You may find that
