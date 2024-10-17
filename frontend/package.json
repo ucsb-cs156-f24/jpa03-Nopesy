@@ -55,7 +55,8 @@
     "eject": "react-scripts eject",
     "coverage": "react-scripts test --coverage --watchAll=false",
     "storybook": "start-storybook --docs -p 6006 -s public",
-    "build-storybook": "build-storybook --docs -s public"
+    "build-storybook": "build-storybook --docs -s public",
+    "chromatic": "npx chromatic --project-token=chpt_7f1fa608cf4195d"
   },
   "browserslist": {
     "production": [
